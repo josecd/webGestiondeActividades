@@ -1,0 +1,13 @@
+<h1 mat-dialog-title>Favorite Animal</h1>
+<div mat-dialog-content>
+    
+    <input [(ngModel)]="endDate" placeholder="Time range from 12:10 am to 08:11 pm"
+        [ngxTimepicker]="range" min="{{stardDate | date : 'h:mm a' }}"  readonly>
+    <ngx-material-timepicker #range></ngx-material-timepicker>
+
+
+    <p> {{stardDate | date : 'h:mm a' }}</p>
+
+    <button mat-button color="primary" (click)="addEvento()" >Primary</button>
+
+</div>
