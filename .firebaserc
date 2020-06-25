@@ -1,0 +1,21 @@
+{
+  "targets": {
+    "adopcioncancun": {
+      "hosting": {
+        "gestionDeActividades": [
+          "adopcioncancun"
+        ]
+      }
+    },
+    "appagendajc": {
+      "hosting": {
+        "gestionDeActividades": [
+          "appagendajc"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "appagendajc"
+  }
+}
