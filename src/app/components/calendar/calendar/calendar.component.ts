@@ -83,7 +83,9 @@ const colors: any = {
     secondary: '#FDF1BA',
   },
 };
-import { registerLocaleData } from '@angular/common';
+
+
+import { registerLocaleData, formatDate } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
 import localeEs from '@angular/common/locales/es';
 import { MatDialog } from '@angular/material/dialog';
@@ -96,7 +98,10 @@ registerLocaleData(localeEs);
 @Component({
   selector: 'app-calendar',
   templateUrl: './calendar.component.html',
-  styleUrls: ['./calendar.component.scss']
+  styleUrls: ['./calendar.component.scss'],
+  providers:[
+     CalendarEventTitleFormatter,
+  ]
 })
 export class CalendarComponent implements OnInit {
   locale: string = 'es';
@@ -134,6 +139,9 @@ export class CalendarComponent implements OnInit {
   ngOnInit(): void {
     this.fetchEvents();
   }
+  ngOnDestroy() {
+    this.calenSubs.unsubscribe();
+  }
 
   fetchEvents(): void {
     const getStart: any = {
@@ -157,11 +165,10 @@ export class CalendarComponent implements OnInit {
         this.events.push({
           start: inicia,
           end: termina,
-          title: 'Cita de ' + element.name,
+          title: formatDate(new Date(inicia), 'h:mm a ', 'en') + 'Cita de ' + element.name,
           id: element._id,
           color:colors.blue,
           actions: [
-
           ]
         })
       });
@@ -193,7 +200,8 @@ export class CalendarComponent implements OnInit {
 
   eventClicked(event: CalendarEvent<any>): void {
     console.log(event);
-    
+    this.viewDate = event.start;
+    this.view = CalendarView.Day;
   }
 
   changeDay(date: Date) {

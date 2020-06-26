@@ -1,3 +1,4 @@
+import { AuthGuard } from './guards/auth.guard';
 import { LoginComponent } from './components/login/login/login.component';
 import { ErrorComponent } from './components/error/error/error.component';
 import { CalendarComponent } from './components/calendar/calendar/calendar.component';
@@ -18,7 +19,7 @@ const routes: Routes = [
   { path: 'entrar', component: LoginComponent},
   { path: 'resgistro', component: RegisterComponent},
 
-  { path: 'calendario', component: CalendarComponent},
+  { path: 'calendario', component: CalendarComponent },
   { path: 'crear-evento/:id', component: CrearEventoComponent},
   
   //Mis rutas
