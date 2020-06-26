@@ -133,5 +133,8 @@
       }
     }
   },
-  "defaultProject": "gestionDeActividades"
+  "defaultProject": "gestionDeActividades",
+  "cli": {
+    "analytics": "f92390b9-6b52-420a-aa96-76da8ae688e8"
+  }
 }

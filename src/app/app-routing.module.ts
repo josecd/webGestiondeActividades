@@ -5,6 +5,12 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { CrearEventoComponent } from './modals/modal-calendario/crear-evento/crear-evento.component';
 import { RegisterComponent } from './components/register/register/register.component';
+import { PerfilComponent } from './pages/perfil/perfil.component';
+import { HomeComponent } from './pages/home/home.component';
+import { TareasComponent } from './pages/tareas/tareas.component';
+import { HorarioComponent } from './pages/horario/horario.component';
+import { MateriasComponent } from './pages/materias/materias.component';
+
 
 
 const routes: Routes = [
@@ -14,8 +20,18 @@ const routes: Routes = [
 
   { path: 'calendario', component: CalendarComponent},
   { path: 'crear-evento/:id', component: CrearEventoComponent},
-  { path: '**', component: ErrorComponent }
+  
+  //Mis rutas
+  {path: 'materias', component: MateriasComponent},
+  {path: 'perfil', component: PerfilComponent},
+  {path: 'home', component: HomeComponent},
+  {path: 'tareas', component: TareasComponent},
+  {path: 'horario', component: HorarioComponent},
 
+
+  
+  
+  { path: '**', component: ErrorComponent}
 ];
 
 @NgModule({

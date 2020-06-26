@@ -29,6 +29,13 @@ import localeEs from '@angular/common/locales/es';
 import { RegisterComponent } from './components/register/register/register.component';
 import { SidebarComponent } from './components/admin/sidebar/sidebar/sidebar.component';
 import { HeaderTestComponent } from './components/admin/header-test/header-test.component';
+import { PerfilComponent } from './pages/perfil/perfil.component';
+import { HomeComponent } from './pages/home/home.component';
+import { TareasComponent } from './pages/tareas/tareas.component';
+import { HorarioComponent } from './pages/horario/horario.component';
+import { MateriasComponent } from './pages/materias/materias.component';
+
+
 registerLocaleData(localeEs);
 @NgModule({
   declarations: [
@@ -41,7 +48,12 @@ registerLocaleData(localeEs);
     CrearEventoComponent,
     RegisterComponent,
     SidebarComponent,
-    HeaderTestComponent
+    HeaderTestComponent,
+    PerfilComponent,
+    HomeComponent,
+    TareasComponent,
+    MateriasComponent,
+    HorarioComponent
   ],
   imports: [
     BrowserModule,
