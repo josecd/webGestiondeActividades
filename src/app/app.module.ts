@@ -7,12 +7,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CalendarComponent } from './components/calendar/calendar/calendar.component';
 import { LoginComponent } from './components/login/login/login.component';
-import { HeaderComponent } from './components/user/header/header/header.component';
 import { ErrorComponent } from './components/error/error/error.component';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/moment';
 import * as moment from 'moment';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CalendarUtilComponent } from './components/utils/calendar-util/calendar-util.component';
 import { AngularFireModule } from '@angular/fire';
@@ -42,7 +41,6 @@ registerLocaleData(localeEs);
     AppComponent,
     CalendarComponent,
     LoginComponent,
-    HeaderComponent,
     ErrorComponent,
     CalendarUtilComponent,
     CrearEventoComponent,
@@ -58,6 +56,8 @@ registerLocaleData(localeEs);
   imports: [
     BrowserModule,
     AppRoutingModule,
+    ReactiveFormsModule,
+
     FormsModule,
     FlatpickrModule.forRoot(),
     AngularFireModule.initializeApp(environment.firebaseConfig),

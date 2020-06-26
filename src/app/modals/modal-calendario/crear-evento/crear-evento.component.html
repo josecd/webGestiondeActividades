@@ -1,4 +1,4 @@
-<h1 mat-dialog-title>Favorite Animal</h1>
+<!-- 
 <div mat-dialog-content>
     
     <input [(ngModel)]="endDate" placeholder="Time range from 12:10 am to 08:11 pm"
@@ -10,4 +10,82 @@
 
     <button mat-button color="primary" (click)="addEvento()" >Primary</button>
 
-</div>
+</div> -->
+
+<body>
+    <div class="main-content">
+        <div class="container mt-7">
+            <!-- Table -->
+            <!-- <h2 class="mb-5">My Account Card</h2> -->
+            <div class="row">
+                <div class="col-xl-8 m-auto order-xl-1">
+                    <div class="card bg-secondary shadow">
+                        <div class="card-header bg-white border-0">
+                            <div class="row align-items-center">
+                                <div class="col-8">
+                                    <h3 class="mb-0">Registro {{stardDate | date : 'MMM d, y' }}, Empieza a {{stardDate | date : 'h:mm:ss a'}} </h3>
+                                </div>
+                                <div class="col-4 text-right">
+                                    <a (click)="addEvento()"  class="btn btn-sm btn-primary">Crear tarea</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <form [formGroup]="eventForm">
+                                <div class="pl-lg-4">
+                                    <div class="row">
+                                        <div class="col-lg-10">
+                                            <div class="form-group focused">
+                                                <label class="form-control-label" for="input-username">Nombre de la
+                                                    tarea</label>
+                                                <input formControlName="title"  type="text" id="input-username"
+                                                    class="form-control form-control-alternative" placeholder="Actividad"
+                                                    >
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-10">
+                                            <div class="form-group">
+                                                <label class="form-control-label" for="input-email">Hora de terminación
+                                                    de la tarea</label>
+
+                                                    <input formControlName="end" class="form-control form-control-alternative" [(ngModel)]="endDate" placeholder="Horario valido"
+                                                    [ngxTimepicker]="range" min="{{stardDate | date : 'h:mm a' }}"  readonly>
+                                                <ngx-material-timepicker #range></ngx-material-timepicker>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-10">
+                                            <div class="form-group focused">
+                                                <label class="form-control-label" for="input-last-name">Materia</label>
+                                                <select formControlName="materia"  class="form-control form-control-alternative" matNativeControl
+                                                    required>
+                                                    <option value="Ingles">Ingles</option>
+                                                    <option value="Desarrollo de aplicaciones web">Desarrollo de aplicaciones web</option>
+                                                    <option value="Movil">Movil</option>
+                                                </select>
+
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-10">
+                                        
+                                                <div class="form-group focused">
+                                                    <label class="form-control-label" for="input-last-name">Descripción</label>
+                                                    <textarea formControlName="name" rows="4" class="form-control form-control-alternative"
+                                                        placeholder="Descripción"></textarea>
+                                                </div>
+                                            </div>
+                                      
+                                    </div>
+                                </div>
+
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
