@@ -84,30 +84,19 @@ export class CrearEventoComponent implements OnInit {
   }
 
   addEvento(){
-    const f = new Date(this.stardDate)
-    const f2 = new Date(this.stardDate)
-    f2.getTime();
-    console.log(f2);
-    
-    const test = new Date(f.getFullYear(),f.getMonth(),f.getDate())
+    const f = new Date(this.stardDate)    
+    const test = new Date(f.getFullYear(),f.getMonth(),f.getDate()).toDateString();
     const hora = this.eventForm.value.end
-    
-    console.log(hora);
-    
-    const fechaHora = new Date()
+    const dateConcatenar = test+" " + hora
+    const f3 = new Date(dateConcatenar)
     const data={
       title: 'test',
       name:'test',
-      start: this.stardDate,
-      end: this.endDate,
+      start: f,
+      end: f3,
     }
-    console.log(this.eventForm.value);
     
-    console.log(data);
-    console.warn(this.dateMes);
-    
-    
-    // this._calendario.addEvento(data);
+     this._calendario.addEvento(data);
   }
 
 }
