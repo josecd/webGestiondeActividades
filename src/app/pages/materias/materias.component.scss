@@ -1,0 +1,38 @@
+// Custom.scss
+// Option A: Include all of Bootstrap
+
+@import "node_modules/bootstrap/scss/bootstrap";
+
+//  Responsive 
+
+// // SM devices (landscape phones, 576px and up)
+// @media (min-width: 576px) { }
+
+// // MD devices (tablets, 768px and up 991)
+// @media (min-width: 768px) { }
+
+// // LG devices (desktops, 992px and up)
+// @media (min-width: 992px) { }
+
+// // XL devices (large desktops, 1200px and up)
+// @media (min-width: 1200px) { }
+
+
+//SCSS
+
+.card-header {
+
+    padding: 1rem;
+    padding-left: 50%;
+    background-color: rgba(0, 0, 0, 0.03);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+
+}
+
+.btn-group{
+    padding-left: 65%;
+}
+
+.btn-materias{
+    padding-left: 75%;
+}
