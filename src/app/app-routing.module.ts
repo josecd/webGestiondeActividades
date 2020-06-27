@@ -15,7 +15,7 @@ import { MateriasComponent } from './pages/materias/materias.component';
 
 
 const routes: Routes = [
-  { path: '',redirectTo: 'calendario',pathMatch: 'full'},
+  { path: '',redirectTo: 'home',pathMatch: 'full'},
   { path: 'entrar', component: LoginComponent},
   { path: 'resgistro', component: RegisterComponent},
 

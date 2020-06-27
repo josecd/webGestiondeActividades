@@ -33,6 +33,9 @@ import { HomeComponent } from './pages/home/home.component';
 import { TareasComponent } from './pages/tareas/tareas.component';
 import { HorarioComponent } from './pages/horario/horario.component';
 import { MateriasComponent } from './pages/materias/materias.component';
+import { AgregarmateriaComponent } from './modals/materias/agregarmateria/agregarmateria/agregarmateria.component';
+import { ActualizarmateriaComponent } from './modals/materias/actualizarmateria/actualizarmateria/actualizarmateria.component';
+import { LoadingComponent } from './utils/loading/loading.component';
 
 
 registerLocaleData(localeEs);
@@ -51,7 +54,10 @@ registerLocaleData(localeEs);
     HomeComponent,
     TareasComponent,
     MateriasComponent,
-    HorarioComponent
+    HorarioComponent,
+    AgregarmateriaComponent,
+    ActualizarmateriaComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,

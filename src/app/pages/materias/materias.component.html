@@ -1,17 +1,4 @@
-<!doctype html>
-<html lang="es">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    
-  </head>
-
-  <body>
-    
+   
     <div class="card">
         <div class="card-header ">
          <b> MATERIAS </b>         
@@ -27,10 +14,10 @@
            <!-- Modal para editar tareas  -->
             <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Eliminar Materias</button> -->
             <div class="btn-materias">   
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@fat">Editar Materias</button>
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">Agregar Materias</button>
+            <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@fat">Editar Materias</button> -->
+                <button type="button" class="btn btn-primary" (click)="openCrearMAteria()">Agregar Materias</button>
             </div>
-                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <!-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                     <div class="modal-header">
@@ -40,43 +27,47 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form>
+                        <form [formGroup]="materiaForm">
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Nombre de la materia:</label>
-                            <input type="text" class="form-control" id="recipient-name">
+                            <input formControlName="nombreMateria" type="text" class="form-control" id="recipient-name">
                         </div>
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Maestro: </label>
-                            <input type="text" class="form-control" id="recipient-name">
+                            <input formControlName="nombreMaestro" type="text" class="form-control" id="recipient-name">
                         </div>
-                        <div class="form-group">
-                            <label for="message-text" class="col-form-label">Descripción:</label>
-                            <textarea class="form-control" id="message-text"></textarea>
-                        </div>
+
                         </form>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                        <button type="button" class="btn btn-primary">Agregar Materia</button>
+                        <button [disabled]="!materiaForm.valid" type="button" class="btn btn-primary" (click)="addMateria()" >Agregar Materia</button>
                     </div>
                     </div>
                 </div>
-                </div>
+                </div> -->
 
 
           <blockquote class="blockquote mb-0">
-            <br><br><p>Muchas materias, muchas materias, muchas materias, muchas materias, muchas materias, muchas materias, muchas materias </p>
-            <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
-          </blockquote>
-        </div>
+            <div class="my-3 p-3 bg-white rounded shadow-sm">
+                <h6 class="border-bottom border-gray pb-2 mb-0">Materias...</h6>
+                <div class="media text-muted pt-3" *ngFor="let item of materias">
+                  <svg class="bd-placeholder-img mr-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 32x32"><title>Placeholder</title><rect width="100%" height="100%" fill="#007bff"></rect><text x="50%" y="50%" fill="#007bff" dy=".3em">32x32</text></svg>
+                  <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+                    <strong class="d-block text-gray-dark">{{item.nombreMateria}}</strong>
+                    {{item.nombreMaestro}}
+                  </p>
+                  <button (click)="eliminarMateria(item._id)" type="button" class="btn btn-primary">Eliminar</button>
+                  <button (click)="openActualizar(item)" type="button" class="btn btn-primary">Actualizar</button>
+
+                </div>
+
+                <!-- Reutilizando componente Loading -->
+                <app-loading *ngIf="!materias">
+
+                </app-loading>
+    
+             
       </div>
 
 
-
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-  </body>
-</html>
