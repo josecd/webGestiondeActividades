@@ -70,16 +70,16 @@ export class MateriasComponent implements OnInit {
       if (result.value) {
         this._materias.deleteMateria(id).then(res=>{
           Swal.fire(
-            'Deleted!',
-            'Your file has been deleted.',
+            '¡Eliminado!',
+            'Tu materia ha sido eliminada.',
             'success'
           )
           
         })
         .catch(error=>{
           Swal.fire(
-            'Deleted!',
-            'Your file has been deleted.',
+            '¡No se guardaron los cambios!',
+            'Tu materia no se eliminó',
             'error'
           )
           

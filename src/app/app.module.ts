@@ -36,6 +36,9 @@ import { MateriasComponent } from './pages/materias/materias.component';
 import { AgregarmateriaComponent } from './modals/materias/agregarmateria/agregarmateria/agregarmateria.component';
 import { ActualizarmateriaComponent } from './modals/materias/actualizarmateria/actualizarmateria/actualizarmateria.component';
 import { LoadingComponent } from './utils/loading/loading.component';
+import { ModalTareasComponent } from './modals/modal-tareas/modal-tareas.component';
+import { ActualizarTareaComponent } from './modals/modal-tareas/actualizar-tarea/actualizar-tarea.component';
+import { AgregarTareaComponent } from './modals/modal-tareas/agregar-tarea/agregar-tarea.component';
 
 
 registerLocaleData(localeEs);
@@ -57,7 +60,10 @@ registerLocaleData(localeEs);
     HorarioComponent,
     AgregarmateriaComponent,
     ActualizarmateriaComponent,
-    LoadingComponent
+    LoadingComponent,
+    ModalTareasComponent,
+    ActualizarTareaComponent,
+    AgregarTareaComponent
   ],
   imports: [
     BrowserModule,
