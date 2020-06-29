@@ -16,6 +16,7 @@
     }
   },
   "projects": {
-    "default": "appagendajc"
+    "default": "appagendajc",
+    "s": "appagendajc"
   }
 }

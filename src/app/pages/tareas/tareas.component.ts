@@ -1,3 +1,4 @@
+import { MateriasService } from './../../services/materias/materias.service';
 import { Component, OnInit } from '@angular/core';
 import { AgregarTareaComponent } from '../../modals/modal-tareas/agregar-tarea/agregar-tarea.component';
 import { Observable, Subscription } from 'rxjs';
@@ -5,7 +6,6 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { TareasService } from '../../services/tareas/tareas.service';
 import Swal from 'sweetalert2';
-
 @Component({
   selector: 'app-tareas',
   templateUrl: './tareas.component.html',
@@ -18,52 +18,81 @@ export class TareasComponent implements OnInit {
   //Create
   tareasForm: FormGroup
 
-  //load
+  //load tareas
   tareasObs$: Observable<any>;
   tareasSub: Subscription;
-  tareas:any;
+  tareas: any;
 
+  //load materias
+  materiasObs$: Observable<any>;
+  materiasSub: Subscription;
+  materias: any;
+
+  //Tabla de carga
+  statuss = '1'
   constructor(
     private _tareas: TareasService,
     public formBuilder: FormBuilder,
     public dialog: MatDialog,
+    private _materias: MateriasService
   ) { }
 
 
   ngOnInit(): void {
-
+    this.loadMaterias();
     this.loadTareas();
-  } 
+    console.log(this.statuss);
 
-//Destruir procesos una vez fuera del componente
+  }
+
+  //Destruir procesos una vez fuera del componente
   ngOnDestroy(): void {
-    this.tareasSub.unsubscribe();
+    if (this.tareasSub) {
+      this.tareasSub.unsubscribe();
     }
-    
+  }
 
-//Load
-loadTareas(){
-  //this.tareasObs$ = this._tareas.getTareas();
-  this.tareasSub = this.tareasObs$.subscribe(res=>{
-    this.tareas = res;
-    console.log(res);
-    
-  })
-}
 
-  openCrearTarea(){
-    this.dialog.open(AgregarTareaComponent,{
+  //Load tareas
+  loadTareas() {
+    if (this.statuss === '1') {
+      this.tareasObs$ = this._tareas.getTareas();
+
+    } else {
+      this.tareasObs$ = this._tareas.getTareasByMateria(this.statuss);
+    }
+    this.tareasSub = this.tareasObs$.subscribe(res => {
+      this.tareas = res;
+      console.log(this.statuss);
+    })
+  }
+
+  //load Materias 
+  loadMaterias() {
+    this.materiasObs$ = this._materias.getMaterias();
+    this.materiasSub = this.materiasObs$.subscribe(res => {
+      this.materias = res;
+      console.log(res);
+    })
+  }
+  filter() {
+    this.loadTareas();
+  }
+
+
+  openCrearTarea() {
+    this.dialog.open(AgregarTareaComponent, {
 
     })
   }
 
-  openActualizar(data){
-    this.dialog.open(AgregarTareaComponent,{
-      data:data
+  openActualizar(data) {
+    this.dialog.open(AgregarTareaComponent, {
+      data: data
     })
   }
 
-  eliminarTarea(id){
+  eliminarTarea(id) {
     Swal.fire({
       title: '¿Estás seguro de eliminar la tarea?',
       text: "¡No podrás revertirlo!",
@@ -75,23 +104,23 @@ loadTareas(){
       cancelButtonText: 'Cancelar'
     }).then((result) => {
       if (result.value) {
-        this._tareas.deleteTarea(id).then(res=>{
+        this._tareas.deleteTarea(id).then(res => {
           Swal.fire(
             'Deleted!',
             'Tu archivo ha sido eliminado',
             'success'
           )
-          
+
         })
-        .catch(error=>{
-          Swal.fire(
-            'Deleted!',
-            'Your file has been deleted.',
-            'error'
-          )
-          
-        })
-        
+          .catch(error => {
+            Swal.fire(
+              'Deleted!',
+              'Your file has been deleted.',
+              'error'
+            )
+
+          })
+
       }
     })
 

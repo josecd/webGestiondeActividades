@@ -1,8 +1,6 @@
 export const globals={
-    type:"",
-    name:"",
-    udi:"",
-    group:"",
+    name:"Jose cordero diaz",
+    udi:'DveBPSLzCGUTZKF6g6xt',
     estado:false,
     data:""
 }

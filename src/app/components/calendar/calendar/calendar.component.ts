@@ -106,7 +106,7 @@ registerLocaleData(localeEs);
 export class CalendarComponent implements OnInit {
   locale: string = 'es';
 
-  view: CalendarView = CalendarView.Month;
+  view: CalendarView = CalendarView.Week;
 
   viewDate: Date = new Date();
 
@@ -140,7 +140,10 @@ export class CalendarComponent implements OnInit {
     this.fetchEvents();
   }
   ngOnDestroy() {
+    if (this.calenSubs) {
     this.calenSubs.unsubscribe();
+      
+    }
   }
 
   fetchEvents(): void {
@@ -165,7 +168,7 @@ export class CalendarComponent implements OnInit {
         this.events.push({
           start: inicia,
           end: termina,
-          title: formatDate(new Date(inicia), 'h:mm a ', 'en') + 'Cita de ' + element.name,
+          title: formatDate(new Date(inicia), 'h:mm a ', 'en') + " Actividad: " + element.title+ ' // ' + "Descripción:" +element.name,
           id: element._id,
           color:colors.blue,
           actions: [

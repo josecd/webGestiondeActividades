@@ -1,3 +1,4 @@
+import { globals } from './../../../utils/golbals';
 import { Observable } from 'rxjs';
 import { AngularFirestoreCollection, AngularFirestoreDocument, AngularFirestore } from '@angular/fire/firestore';
 import { Injectable } from '@angular/core';
@@ -7,6 +8,7 @@ import 'firebase/functions'
   providedIn: 'root'
 })
 export class CalendarioService {
+  uid=globals.udi
   adminRef: AngularFirestoreCollection<any>;
   adminDocRef: AngularFirestoreDocument;
   adminObs$: Observable<any>;
@@ -17,22 +19,32 @@ export class CalendarioService {
      }
   
   getCalendario(){
-    return this.afs.collection('calendario').valueChanges();
+    return this.afs.collection('users').doc(this.uid).collection('tareas').valueChanges();
   }
 
-  addEvento(data){
+  addEvento(data,form ) : Promise<any>{
+    return new Promise(async (resolve, reject) => {
     const id =this.afs.createId();
-    this.afs.collection("calendario").add({
-      id:id,
-      name:"Test",
-      title:"Testeo",
+    this.afs.collection("users").doc(this.uid).collection('tareas').doc(id).set({
+      _id:id,
+      name:form.name,
+      title:form.title,
+      materia: form.materia.nombreMateria,
       start:data.start,
-      end:data.end
-    })
+      end:data.end,
+      idMateria:form.materia._id,
+      created_at: new Date(),
+      updated_at: new Date(),
+      status: true,
+      isDeleted: false
+    }).then(res=> resolve(res))
+      .catch(error=> reject(error))
+  });
   }
 
   updateEvent(id, data){
     this.afs.collection("calendario").doc(id).update({
+      updated_at: new Date(),
       end:data
     })
   }
