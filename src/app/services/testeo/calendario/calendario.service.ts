@@ -19,7 +19,7 @@ export class CalendarioService {
      }
   
   getCalendario(){
-    return this.afs.collection('users').doc(this.uid).collection('tareas').valueChanges();
+    return this.afs.collection('users').doc(this.uid).collection('tareas',ref=>ref.where('isDeleted','==',false)).valueChanges();
   }
 
   addEvento(data,form ) : Promise<any>{

@@ -39,6 +39,8 @@ import { LoadingComponent } from './utils/loading/loading.component';
 import { ModalTareasComponent } from './modals/modal-tareas/modal-tareas.component';
 import { ActualizarTareaComponent } from './modals/modal-tareas/actualizar-tarea/actualizar-tarea.component';
 import { AgregarTareaComponent } from './modals/modal-tareas/agregar-tarea/agregar-tarea.component';
+import { RecuperarContrasenaComponent } from './modals/recuperar-contrasena/recuperar-contrasena.component';
+import { AnadirAmigosComponent } from './modals/anadir-amigos/anadir-amigos.component';
 
 
 registerLocaleData(localeEs);
@@ -63,7 +65,9 @@ registerLocaleData(localeEs);
     LoadingComponent,
     ModalTareasComponent,
     ActualizarTareaComponent,
-    AgregarTareaComponent
+    AgregarTareaComponent,
+    RecuperarContrasenaComponent,
+    AnadirAmigosComponent
   ],
   imports: [
     BrowserModule,

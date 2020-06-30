@@ -15,9 +15,9 @@ import { MateriasComponent } from './pages/materias/materias.component';
 
 
 const routes: Routes = [
-  { path: '',redirectTo: 'home',pathMatch: 'full'},
+  { path: '',redirectTo: 'inicio',pathMatch: 'full'},
   { path: 'entrar', component: LoginComponent},
-  { path: 'resgistro', component: RegisterComponent},
+  { path: 'registro', component: RegisterComponent},
 
   { path: 'calendario', component: CalendarComponent },
   { path: 'crear-evento/:id', component: CrearEventoComponent},
@@ -25,7 +25,7 @@ const routes: Routes = [
   //Mis rutas
   {path: 'materias', component: MateriasComponent},
   {path: 'perfil', component: PerfilComponent},
-  {path: 'home', component: HomeComponent},
+  {path: 'inicio', component: HomeComponent},
   {path: 'tareas', component: TareasComponent},
   {path: 'horario', component: HorarioComponent},
 
