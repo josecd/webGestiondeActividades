@@ -42,6 +42,7 @@ import { AnadirAmigosComponent } from './modals/anadir-amigos/anadir-amigos.comp
 import * as firebase from 'firebase';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
 registerLocaleData(localeEs);
 @NgModule({
   declarations: [
@@ -76,7 +77,7 @@ registerLocaleData(localeEs);
     FormsModule,
     FlatpickrModule.forRoot(),
     AngularFireModule.initializeApp(environment.firebaseConfig),
-
+    AngularFirestoreModule,
     CalendarModule.forRoot({ 
       provide: DateAdapter, 
       useFactory: momentAdapterFactory }),

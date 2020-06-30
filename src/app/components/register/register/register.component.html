@@ -75,26 +75,53 @@
                 </div>
             </div>
             <div class="d-flex justify-content-center form_container">
-                <form >
-                    <div class="input-group mb-3">
-                        <div class="input-group-append">
+                <form [formGroup]="registerForm">
+                    <div class="input-content">
+                        <!-- <div class="input-group-append">
                             <span class="input-group-text"><i class="fas fa-user"></i></span>
-                        </div>
-                        <input type="text" name="" class="form-control-login input_user" value="" placeholder="Nombre">
+                        </div> -->
+                        <input formControlName="nombre" type="text" name="" class="form-control-login input_user" value="" placeholder="Nombre">
+                       
+                    </div>
+                    <div class="error-messages">
+                        <ng-container *ngFor="let error of error_messages.nombre">
+                            <div class="error-message"
+                                *ngIf="registerForm.get('nombre').hasError(error.type) && (registerForm.get('nombre').dirty ||registerForm.get('nombre').touched)">
+                                {{error.message}}
+                            </div>
+                        </ng-container>
+                    </div>
+                    <div class="input-content">
+                        <!-- <div class="input-group-append">
+                            <span class="input-group-text"><i class="fas fa-user"></i></span>
+                        </div> -->
+                        <input formControlName="correo" type="text" name="" class="form-control-login input_user" value="" placeholder="Correo">
+                        
                     </div>
 
-                    <div class="input-group mb-3">
-                        <div class="input-group-append">
-                            <span class="input-group-text"><i class="fas fa-user"></i></span>
-                        </div>
-                        <input type="text" name="" class="form-control-login input_user" value="" placeholder="Correo">
+                    <div class="error-messages">
+                        <ng-container *ngFor="let error of error_messages.correo">
+                            <div class="error-message"
+                                *ngIf="registerForm.get('correo').hasError(error.type) && (registerForm.get('correo').dirty ||registerForm.get('correo').touched)">
+                                {{error.message}}
+                            </div>
+                        </ng-container>
                     </div>
 
-                    <div class="input-group mb-2">
-                        <div class="input-group-append">
+                    <div class="input-content">
+                        <!-- <div class="input-group-append">
                             <span class="input-group-text"><i class="fas fa-key"></i></span>
-                        </div>
-                        <input type="password" name="" class="form-control-login input_pass" value="" placeholder="Contraseña">
+                        </div> -->
+                        <input formControlName="contrasena" type="password" name="" class="form-control-login input_pass" value="" placeholder="Contraseña">
+                       
+                    </div>
+                    <div class="error-messages">
+                        <ng-container *ngFor="let error of error_messages.contrasena">
+                            <div class="error-message"
+                                *ngIf="registerForm.get('contrasena').hasError(error.type) && (registerForm.get('contrasena').dirty ||registerForm.get('contrasena').touched)">
+                                {{error.message}}
+                            </div>
+                        </ng-container>
                     </div>
                     <div class="form-group">
                         <div class="custom-control custom-checkbox">
@@ -103,14 +130,14 @@
                         </div>
                     </div>
                         <div class=" d-flex justify-content-center mt-3 login_container">
-                 <button (click)="registro()"  type="button" name="button" class="btn login_btn">Registrar</button>
+                 <button [disabled]="!registerForm.valid" (click)="registro()"  type="button" name="button" class="btn login_btn">Registrar</button>
                </div>
                 </form>
             </div>
     
             <div class="mt-4">
                 <div class="links-login d-flex justify-content-center links">
-                <b>	¿Tienes una cuenta?</b><a href="entrar" class="ml-2">Inicia sesión</a>
+                <b>	¿Tienes una cuenta?</b><a [routerLink]="['/entrar']"   class="ml-2">Inicia sesión</a>
                 </div>
                 <!-- <div class="links-login d-flex justify-content-center links">
                     <a href="#">¿Olvidaste tu contraseña?</a>

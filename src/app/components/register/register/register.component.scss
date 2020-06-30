@@ -159,3 +159,19 @@ body {
 		background: hsl(random(360), 70%, 50%);
 	}
 }
+.form-group{
+    margin-bottom: .5rem !important;
+}
+.error-messages {
+    font-size: 0.7em;
+    color: red;
+    text-align: center;
+    font-size: 14px;
+}
+.input-content{
+    input{
+        border-radius: 12px !important;
+        margin-bottom: 5px !important;
+    }
+    
+}

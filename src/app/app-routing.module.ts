@@ -19,15 +19,15 @@ const routes: Routes = [
   { path: 'entrar', component: LoginComponent},
   { path: 'registro', component: RegisterComponent},
 
-  { path: 'calendario', component: CalendarComponent },
-  { path: 'crear-evento/:id', component: CrearEventoComponent},
+  { path: 'calendario', component: CalendarComponent,canActivate: [AuthGuard] },
+  { path: 'crear-evento/:id', component: CrearEventoComponent ,canActivate: [AuthGuard]},
   
   //Mis rutas
-  {path: 'materias', component: MateriasComponent},
-  {path: 'perfil', component: PerfilComponent},
-  {path: 'inicio', component: HomeComponent},
-  {path: 'tareas', component: TareasComponent},
-  {path: 'horario', component: HorarioComponent},
+  {path: 'materias', component: MateriasComponent,canActivate: [AuthGuard]},
+  {path: 'perfil', component: PerfilComponent,canActivate: [AuthGuard]},
+  {path: 'inicio', component: HomeComponent,canActivate: [AuthGuard]},
+  {path: 'tareas', component: TareasComponent,canActivate: [AuthGuard]},
+  {path: 'horario', component: HorarioComponent,canActivate: [AuthGuard]},
 
 
   
@@ -36,7 +36,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes,{ useHash: true})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

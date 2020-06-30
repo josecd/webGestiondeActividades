@@ -5,9 +5,6 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import * as firebase from "firebase/app";
 
-
-
-
 @Injectable({
   providedIn: 'root'
 })
@@ -31,10 +28,33 @@ export class AuthServiceService {
     private db: AngularFirestore,
   ) { }
 
+  addNewUser(user): Promise<any> {
+    return new Promise((resolve, reject) => {
+      var message = firebase.functions().httpsCallable('add')
+      message({ text: user.value }).then(result => {
+        var sanitizedMessage = result;
+        if (sanitizedMessage.data.success) {
+          // this.toaster.showToast('top-right', "success", "Usuario agregado");
+        } else if (sanitizedMessage.data.error) {
+          if (sanitizedMessage.data.error = 'The email address is already in use by another account.') {
+            // this.toaster.showToast('top-right', "warning", "La dirección de correo electrónico ya está en uso por otra cuenta.");
+
+          } else if (sanitizedMessage.data.error = 'The email address is already in use by another account.') {
+          }
+        }
+        resolve(result)
+      }, err => {
+        reject(err)
+      }).catch(err => {
+      });
+    })
+
+  }
+
   loginUser(value): Promise<any> {
     return new Promise<any>((resolve, reject) => {
       this.auth
-        .signInWithEmailAndPassword(value.email, value.password)
+        .signInWithEmailAndPassword(value.correo, value.contrasenia)
         .then(
           res => {
             firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL).then(res => {

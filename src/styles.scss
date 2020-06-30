@@ -15,3 +15,9 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 background: none !important;
 box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0), 0px 0px 0px 0px rgba(0, 0, 0, 0.14), 0px 0px 0px 0px rgba(0, 0, 0, 0);
 }
+.custom-control{
+    position: unset !important;
+    display: unset !important;
+    min-height: unset !important;
+    padding-left: unset !important;
+}
