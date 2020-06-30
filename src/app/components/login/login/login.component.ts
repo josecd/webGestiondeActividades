@@ -57,7 +57,7 @@ export class LoginComponent implements OnInit {
           ])
         ),
         correo: new FormControl(
-          '',
+          'test@mail.com',
           Validators.compose([
             Validators.required,
             Validators.minLength(6),

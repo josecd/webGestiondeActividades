@@ -16,7 +16,7 @@ export class TareasService {
   
   constructor(
     private afs: AngularFirestore) 
-  {  } DveBPSLzCGUTZKF6g6xt
+  {  } 
   
   getTareas(){
     return this.afs.collection("users").doc(this.uid).collection('tareas',ref=>ref.where('isDeleted','==',false)).valueChanges();

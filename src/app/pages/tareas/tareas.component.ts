@@ -27,7 +27,7 @@ export class TareasComponent implements OnInit {
   materiasObs$: Observable<any>;
   materiasSub: Subscription;
   materias: any;
-
+  tamanio
   //Tabla de carga
   statuss = '1'
   constructor(
@@ -41,8 +41,6 @@ export class TareasComponent implements OnInit {
   ngOnInit(): void {
     this.loadMaterias();
     this.loadTareas();
-    console.log(this.statuss);
-
   }
 
   //Destruir procesos una vez fuera del componente
@@ -63,7 +61,7 @@ export class TareasComponent implements OnInit {
     }
     this.tareasSub = this.tareasObs$.subscribe(res => {
       this.tareas = res;
-      console.log(this.statuss);
+
     })
   }
 
@@ -72,7 +70,6 @@ export class TareasComponent implements OnInit {
     this.materiasObs$ = this._materias.getMaterias();
     this.materiasSub = this.materiasObs$.subscribe(res => {
       this.materias = res;
-      console.log(res);
     })
   }
   filter() {

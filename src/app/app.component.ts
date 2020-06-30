@@ -27,6 +27,11 @@ export class AppComponent {
 
     const auths = await this.auth.authState.subscribe(res => {
       if (res?.uid) {
+        const user=  res
+        globals.name = user.displayName;
+        globals.udi = user.uid;
+        globals.urlPerfil= user.photoURL;
+        globals.estado = true;
           globals.estado = true;
       } else if (res?.uid === null) {
         console.log(res.uid);

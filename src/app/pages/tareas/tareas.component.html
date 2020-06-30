@@ -5,16 +5,16 @@
   <div class="card-body">
 
     <div class="btn-tareas">
-      <label class="form-control-label" for="input-last-name">Materia</label>
-      <mat-form-field >
-          <mat-label>Seleccionar</mat-label>
-          <mat-select [(ngModel)]="statuss" >
-            <mat-option  value="1">Todas las materias</mat-option>
-            <mat-option *ngFor="let item of materias" [value]="item._id">{{item.nombreMateria}}</mat-option>
-          </mat-select>
-        </mat-form-field>
-      <button type="button" class="btn btn-primary" (click)="filter()" >filter</button>
-      <button type="button" class="btn btn-primary" (click)="openCrearTarea()">Agregar Tareas</button>
+      <!-- <label class="form-control-label" for="input-last-name">Materia</label> -->
+      <mat-form-field>
+        <mat-label>Seleccionar</mat-label>
+        <mat-select [(ngModel)]="statuss">
+          <mat-option value="1">Todas las materias</mat-option>
+          <mat-option *ngFor="let item of materias" [value]="item._id">{{item.nombreMateria}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <button type="button" class="btn btn-primary" (click)="filter()">Filtrar</button>
+      <!-- <button type="button" class="btn btn-primary" (click)="openCrearTarea()">Agregar Tareas</button> -->
     </div>
 
     <blockquote class="blockquote mb-0">
@@ -36,6 +36,12 @@
           <button (click)="eliminarTarea(item._id)" type="button" class="btn btn-primary">Eliminar</button>
           <button (click)="openActualizar(item)" type="button" class="btn btn-primary">Actualizar</button>
 
+        </div>
+
+        <div *ngIf="tareas?.length == 0">
+          <h5 style="text-align: center; color: rgb(103, 106, 108);padding: 35px;">
+            No hay tareas agregadas
+          </h5>
         </div>
 
         <!-- Reutilizando componente Loading -->
