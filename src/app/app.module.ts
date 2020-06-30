@@ -1,5 +1,4 @@
 import { MaterialModule } from './material-module';
-import { environment } from './../environments/environment';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -14,7 +13,6 @@ import * as moment from 'moment';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CalendarUtilComponent } from './components/utils/calendar-util/calendar-util.component';
-import { AngularFireModule } from '@angular/fire';
 export function momentAdapterFactory() {
   return adapterFactory(moment);
 };
@@ -41,8 +39,9 @@ import { ActualizarTareaComponent } from './modals/modal-tareas/actualizar-tarea
 import { AgregarTareaComponent } from './modals/modal-tareas/agregar-tarea/agregar-tarea.component';
 import { RecuperarContrasenaComponent } from './modals/recuperar-contrasena/recuperar-contrasena.component';
 import { AnadirAmigosComponent } from './modals/anadir-amigos/anadir-amigos.component';
-
-
+import * as firebase from 'firebase';
+import { AngularFireModule } from '@angular/fire';
+import { environment } from '../environments/environment';
 registerLocaleData(localeEs);
 @NgModule({
   declarations: [
@@ -77,6 +76,7 @@ registerLocaleData(localeEs);
     FormsModule,
     FlatpickrModule.forRoot(),
     AngularFireModule.initializeApp(environment.firebaseConfig),
+
     CalendarModule.forRoot({ 
       provide: DateAdapter, 
       useFactory: momentAdapterFactory }),

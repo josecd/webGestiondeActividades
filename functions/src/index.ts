@@ -1,13 +1,10 @@
 import * as functions from 'firebase-functions';
 import * as admin from 'firebase-admin';
+admin.initializeApp();
 
-// // Start writing Firebase Functions
-// // https://firebase.google.com/docs/functions/typescript
-//
-// export const helloWorld = functions.https.onRequest((request, response) => {
-//  response.send("Hello from Firebase!");
-// });
-exports.addUser = functions.https.onCall((data, context ) => {
+exports.add = functions.https.onCall((data, context ) => {
+    console.log(data);
+    
     const nombre = data.text.nombre;
     const correo = data.text.correo;
     const urlPerfil = data.text.urlPerfil;
