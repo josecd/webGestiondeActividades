@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-anadir-amigos',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AnadirAmigosComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    public dialogRef: MatDialogRef<AnadirAmigosComponent>,
+
+  ) { }
 
   ngOnInit(): void {
   }
-
+  close() {
+    this.dialogRef.close();
+  }
 }

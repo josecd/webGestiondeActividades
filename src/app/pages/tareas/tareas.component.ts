@@ -1,3 +1,4 @@
+import { AnadirAmigosComponent } from './../../modals/anadir-amigos/anadir-amigos.component';
 import { MateriasService } from './../../services/materias/materias.service';
 import { Component, OnInit } from '@angular/core';
 import { AgregarTareaComponent } from '../../modals/modal-tareas/agregar-tarea/agregar-tarea.component';
@@ -76,6 +77,11 @@ export class TareasComponent implements OnInit {
     this.loadTareas();
   }
 
+  buscarAmigo() {
+    this.dialog.open(AnadirAmigosComponent, {
+
+    })
+  }
 
   openCrearTarea() {
     this.dialog.open(AgregarTareaComponent, {
