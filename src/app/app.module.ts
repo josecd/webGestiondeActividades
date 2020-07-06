@@ -43,6 +43,7 @@ import * as firebase from 'firebase';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { VerAmigosComponent } from './components/ver-amigos/ver-amigos.component';
 registerLocaleData(localeEs);
 @NgModule({
   declarations: [
@@ -67,7 +68,8 @@ registerLocaleData(localeEs);
     ActualizarTareaComponent,
     AgregarTareaComponent,
     RecuperarContrasenaComponent,
-    AnadirAmigosComponent
+    AnadirAmigosComponent,
+    VerAmigosComponent
   ],
   imports: [
     BrowserModule,

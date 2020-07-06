@@ -3,7 +3,7 @@ import * as admin from 'firebase-admin';
 admin.initializeApp();
 
 exports.add = functions.https.onCall((data, context ) => {
-    console.log(data);
+    const date = new Date().getTime();
     
     const nombre = data.text.nombre;
     const correo = data.text.correo;
@@ -25,7 +25,8 @@ exports.add = functions.https.onCall((data, context ) => {
             status: true,
             nombre: nombre,
             correo: correo,
-            urlPerfil: urlPerfil
+            urlPerfil: urlPerfil,
+            codigoUsuario: date
         }).catch(error => {
             console.log('falle', error)
         })

@@ -79,7 +79,7 @@ export class TareasComponent implements OnInit {
 
   buscarAmigo() {
     this.dialog.open(AnadirAmigosComponent, {
-
+      width: "500px"
     })
   }
 
