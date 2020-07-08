@@ -83,7 +83,7 @@
                         <input formControlName="nombre" type="text" name="" class="form-control-login input_user" value="" placeholder="Nombre">
                        
                     </div>
-                    <div class="error-messages">
+                    <div class="error-messages-me">
                         <ng-container *ngFor="let error of error_messages.nombre">
                             <div class="error-message"
                                 *ngIf="registerForm.get('nombre').hasError(error.type) && (registerForm.get('nombre').dirty ||registerForm.get('nombre').touched)">
@@ -99,7 +99,7 @@
                         
                     </div>
 
-                    <div class="error-messages">
+                    <div class="error-messages-me">
                         <ng-container *ngFor="let error of error_messages.correo">
                             <div class="error-message"
                                 *ngIf="registerForm.get('correo').hasError(error.type) && (registerForm.get('correo').dirty ||registerForm.get('correo').touched)">
@@ -115,7 +115,7 @@
                         <input formControlName="contrasena" type="password" name="" class="form-control-login input_pass" value="" placeholder="Contraseña">
                        
                     </div>
-                    <div class="error-messages">
+                    <div class="error-messages-me">
                         <ng-container *ngFor="let error of error_messages.contrasena">
                             <div class="error-message"
                                 *ngIf="registerForm.get('contrasena').hasError(error.type) && (registerForm.get('contrasena').dirty ||registerForm.get('contrasena').touched)">
