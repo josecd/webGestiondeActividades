@@ -19,12 +19,12 @@ export class TareasService {
   {  } 
   
   getTareas(){
-    return this.afs.collection("users").doc(this.uid).collection('tareas',ref=>ref.where('isDeleted','==',false)).valueChanges();
+    return this.afs.collection("users").doc(this.uid).collection('tareas',ref=>ref.where('isDeleted','==',false).orderBy('start','asc')).valueChanges();
   }
 
   getTareasByMateria(idMateria){
-    return this.afs.collection("users").doc(this.uid).collection('tareas',ref=>ref.where('isDeleted','==',false).where('idMateria','==',idMateria)).valueChanges();
-  }
+    return this.afs.collection("users").doc(this.uid).collection('tareas',ref=>ref.where('isDeleted','==',false).where('idMateria','==',idMateria).orderBy('start','asc')).valueChanges();
+  } 
 
   addTarea(form): Promise<any>{
     return new Promise(async (resolve, reject) => {
