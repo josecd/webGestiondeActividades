@@ -44,8 +44,11 @@ import { environment } from '../environments/environment';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { VerAmigosComponent } from './components/ver-amigos/ver-amigos.component';
 
+
 import localeEs from '@angular/common/locales/es';
 import { es } from 'date-fns/locale';
+import { PerfilAmigoService } from './services/perfil-amigo/perfil-amigo.service';
+import { PerfilAmigoComponent } from './modals/perfil-amigo/perfil-amigo.component';
 registerLocaleData(localeEs, 'es');
 @NgModule({
   declarations: [
@@ -71,7 +74,8 @@ registerLocaleData(localeEs, 'es');
     AgregarTareaComponent,
     RecuperarContrasenaComponent,
     AnadirAmigosComponent,
-    VerAmigosComponent
+    VerAmigosComponent,
+    PerfilAmigoComponent
   ],
   imports: [
     BrowserModule,

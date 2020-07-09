@@ -4,13 +4,38 @@
     background: #009375;
     color: #fff;
     padding: 16px 30px;
-    margin: -20px -25px 10px;
     border-radius: 3px 3px 0 0;
 }
 
-#horario{
-    text-align: center;
-}
-.form{
+.horario-img{
     
+
+    display: block ;
+    margin: 0 auto;
+     height: 70% !important; 
+     width: 70% !important;
+
+    //right: 0em;
+    //height: 100% !important;
+    //width: 100% !important;
+
+    //position: flex;
+    //height: 100vh;
+    //background-size: 50% 50%;
+    //background-position: center;
+    //background-attachment: fixed;
+}
+
+.horario-box{
+    border: 0.5em;
+    border-style: dashed;
+    color: #009375;
+    border-width: 0.5em;
+
+}
+
+
+
+.forme{
+position: relative;
 }
