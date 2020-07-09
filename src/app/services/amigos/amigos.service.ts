@@ -41,8 +41,6 @@ export class AmigosService {
         resolve(res[0])
       })
     })
-
-
   }
 
   agregarAmigo(idAmigo): Promise<any> {

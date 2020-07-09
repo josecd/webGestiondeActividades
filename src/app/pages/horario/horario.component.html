@@ -7,21 +7,27 @@
                 <div class="file-field">
                   <div class="btn btn-primary btn-sm float-left">
                     <span></span>
-                    <input type="file">
+                    <input (change)="cambioArchivo($event)" type="file">
                   </div>
                 </div>
               </form>
         </div>
         <form class="forme">
-          <div class="btn btn-primary btn-sm btn-quitar">
-            <span>Quitar imagen</span>
+          <div *ngIf="estadoImg === true" class="btn btn-primary btn-sm btn-quitar">
+            <button  (click)="eliminarHorario()" >Quitar imagen</button>
+
+          </div>
+
+          <div *ngIf="estadoImg === false"  class="btn btn-primary btn-sm btn-quitar">
+            <!-- <span [disabled]="imageSrc" >subir imagen</span> -->
+            <button  (click)="subirArchivo()" >subir imagen</button>
           </div>
       </form>
     </div>
 
     <div class="horario-box">
 
-      <img src="../../../assets/img/92.PNG" class="horario-img">
+      <img [src]="imageSrc1 || imageSrc " class="horario-img">
 
     </div>
 
