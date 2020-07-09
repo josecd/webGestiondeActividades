@@ -54,7 +54,7 @@ export class HorarioComponent implements OnInit {
   }
   async subirArchivo() {
     Swal.fire({
-      title: 'Creando administrador.',
+      title: 'Subiendo la imagen...',
       html: '',
       timerProgressBar: true,
       onBeforeOpen: () => {
