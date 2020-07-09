@@ -22,7 +22,6 @@ import { CrearEventoComponent } from './modals/modal-calendario/crear-evento/cre
 import { registerLocaleData } from '@angular/common';
 import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import localeEs from '@angular/common/locales/es';
 import { RegisterComponent } from './components/register/register/register.component';
 import { SidebarComponent } from './components/admin/sidebar/sidebar/sidebar.component';
 import { HeaderTestComponent } from './components/admin/header-test/header-test.component';
@@ -44,7 +43,10 @@ import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { VerAmigosComponent } from './components/ver-amigos/ver-amigos.component';
-registerLocaleData(localeEs);
+
+import localeEs from '@angular/common/locales/es';
+import { es } from 'date-fns/locale';
+registerLocaleData(localeEs, 'es');
 @NgModule({
   declarations: [
     AppComponent,
@@ -89,7 +91,7 @@ registerLocaleData(localeEs);
     BrowserAnimationsModule,
     NgxMaterialTimepickerModule
   ],
-  providers: [CalendarComponent],
+  providers: [{ provide: es, useValue: 'es'}, CalendarComponent],
   bootstrap: [AppComponent,CalendarComponent]
 })
 export class AppModule { }

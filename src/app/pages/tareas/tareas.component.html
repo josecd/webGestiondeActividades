@@ -31,8 +31,9 @@
               dy=".3em">32x32</text>
           </svg>
           <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-            <strong class="d-block text-gray-dark">{{item.title}}</strong>
+            <strong class="d-block text-gray-dark">{{item.title}}// Empieza: {{item.start *1000 | date: 'd / M, h:mm a'}}</strong>
             {{item.name}}
+            {{item.start | date: 'dd-MM-yyyy'}}
           </p>
 
           <button (click)="eliminarTarea(item._id)" type="button" class="btn btn-primary">Eliminar</button>
