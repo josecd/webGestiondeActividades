@@ -3,24 +3,24 @@
         <div class="col-sm-8">
             <h2 id="Horario"><b>Horario</b></h2>
         </div>
-            <form class="col-sm-4 forme-archive">
+            <form  [formGroup]="archivoForm" class="col-sm-4 forme-archive">
                 <div class="file-field">
                   <div class="btn btn-primary btn-sm float-left">
-                    <span></span>
-                    <input (change)="cambioArchivo($event)" type="file">
+                    <span>{{archivoForm.value.archivo}}</span>
+                    <input formControlName="archivo" (change)="cambioArchivo($event)" type="file">
                   </div>
                 </div>
               </form>
         </div>
         <form class="forme">
           <div *ngIf="estadoImg === true" class="btn btn-primary btn-sm btn-quitar">
-            <button  (click)="eliminarHorario()" >Quitar imagen</button>
+            <button   (click)="eliminarHorario()" >Quitar imagen</button>
 
           </div>
 
           <div *ngIf="estadoImg === false"  class="btn btn-primary btn-sm btn-quitar">
             <!-- <span [disabled]="imageSrc" >subir imagen</span> -->
-            <button  (click)="subirArchivo()" >subir imagen</button>
+            <button [disabled]="!archivoForm.value.archivo"  (click)="subirArchivo()" >subir imagen</button>
           </div>
       </form>
     </div>

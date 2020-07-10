@@ -62,13 +62,18 @@ export class HorarioComponent implements OnInit {
         let archivo = this.datosFormulario.get('archivo');
         this._storageService.uploadHorario(archivo).then(res => {
           this.imageSrc = res;
+
           this._horario.subirHorario(this.imageSrc).then(res => {
-            this.getHorario();
-            Swal.hideLoading()
+          
+            this.datosFormulario.delete('archivo');
+
             this.mensajeArchivo = 'No hay un archivo seleccionado';
             this.datosFormulario = new FormData();
             this.nombreArchivo = '';
             this.URLPublica = '';
+            this.archivoForm.value.archivo = null
+            this.getHorario();
+            Swal.hideLoading()
           })
         })
 
@@ -98,9 +103,11 @@ export class HorarioComponent implements OnInit {
         Swal.showLoading()
         this._horario.eliminaHorario(this.idHorario)
           .then(res => {
-            this.imageSrc1 ="../../../assets/img/horario-default.png";
+            this.imageSrc1 = "../../../assets/img/horario-default.png";
             this.getHorario();
             Swal.hideLoading();
+            this.datosFormulario = new FormData();
+
           }).catch(error => {
             this.getHorario();
             Swal.hideLoading();
