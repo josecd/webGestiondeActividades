@@ -1,3 +1,11 @@
+.codigouser{
+    border-width: 1px;
+    border-radius: 30px !important;
+    text-align: center;
+}
+
+
+
 .btn,
 .navbar .navbar-nav>a.btn {
     border-width: 2px;
@@ -127,7 +135,8 @@
 
 .btn-primary {
     background-color: #f96332;
-    color: #FFFFFF;
+    color: #FFFFFF !important;
+    
 }
 
 .btn-primary:hover,

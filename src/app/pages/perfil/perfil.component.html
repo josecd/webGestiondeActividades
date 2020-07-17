@@ -11,7 +11,11 @@
           <img src="{{dataUser.urlPerfil}}" alt="">
         </div>
         <h3 class="title">{{dataUser.nombre}}</h3>
-        <p class="category">{{dataUser.codigoUsuario}}</p>
+        <p class="category">
+          <input class="codigouser" type="text" value={{dataUser.codigoUsuario}} #sharableLink readonly >  
+          <button class="btn  btn-round " (click)="copyToClipboard(sharableLink)" >Copia el ID</button>
+           <!-- {{dataUser.codigoUsuario}} -->
+          </p>   
         <div class="content">
           <div class="social-description">
             <h2>{{tareasPendientes}}</h2>
@@ -27,7 +31,7 @@
     <div class="section">
       <div class="container">
         <div class="button-container">
-          <a (click)="buscarAmigo()"  class="btn btn-primary btn-round btn-lg">Buscar amigos</a>
+          <a (click)="buscarAmigo()"  class="btn btn-primary btn-round btn-lg"><b>Buscar amigos</b></a>
           <!-- <a href="#button" class="btn btn-default btn-round btn-lg btn-icon" rel="tooltip"
             title="Follow me on Twitter">
             <i class="fab fa-twitter"></i>
@@ -56,6 +60,6 @@
     crossorigin="anonymous"></script>
 
     <button (click)="copyToClipboard(sharableLink)" >Copy link</button>
-    <input type="text" value="This is the value to copy" #sharableLink >
+    <input type="text" value={{dataUser.codigoUsuario}} #sharableLink readonly >
 
 </body>
