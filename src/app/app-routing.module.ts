@@ -27,7 +27,11 @@ const routes: Routes = [
   {path: 'perfil', component: PerfilComponent,canActivate: [AuthGuard]},
   {path: 'inicio', component: HomeComponent,canActivate: [AuthGuard]},
   {path: 'tareas', component: TareasComponent,canActivate: [AuthGuard]},
+  {path: 'tareas/:id', component: TareasComponent,canActivate: [AuthGuard]},
+
   {path: 'horario', component: HorarioComponent,canActivate: [AuthGuard]},
+  {path: 'horario/:id', component: HorarioComponent,canActivate: [AuthGuard]},
+
 
 
   

@@ -1,3 +1,4 @@
+import { ActivatedRoute } from '@angular/router';
 import { HorarioService } from './../../services/horario/horario.service';
 import { StorageService } from './../../services/storage/storage.service';
 import { Component, OnInit } from '@angular/core';
@@ -23,13 +24,24 @@ export class HorarioComponent implements OnInit {
   imageSrc
   estadoImg
   idHorario
+  idAmigo
   constructor(
     private _storageService: StorageService,
-    private _horario: HorarioService
-  ) { }
+    private _horario: HorarioService,
+    private route: ActivatedRoute,
+
+  ) { 
+    this.idAmigo = this.route.snapshot.paramMap.get("id");
+
+  }
 
   ngOnInit(): void {
+    if (!this.idAmigo) {
     this.getHorario();
+      
+    } else {
+      this.getHorarioAmigo();
+    }
   }
 
   public cambioArchivo(event) {
@@ -83,6 +95,19 @@ export class HorarioComponent implements OnInit {
 
   getHorario() {
     this._horario.getHorarioExiste().then(res => {
+      if (res) {
+        this.imageSrc1 = res.link
+        this.idHorario = res._id
+        this.estadoImg = true
+      } else {
+        this.estadoImg = false
+      }
+
+    })
+  }
+
+  getHorarioAmigo() {
+    this._horario.getHorarioExisteAmigo(this.idAmigo).then(res => {
       if (res) {
         this.imageSrc1 = res.link
         this.idHorario = res._id

@@ -18,6 +18,10 @@ export class TareasService {
     private afs: AngularFirestore) 
   {  } 
   
+  getTareasAmigo(id){
+    return this.afs.collection("users").doc(id).collection('tareas',ref=>ref.where('isDeleted','==',false).orderBy('start','asc')).valueChanges();
+  }
+
   getTareas(){
     return this.afs.collection("users").doc(this.uid).collection('tareas',ref=>ref.where('isDeleted','==',false).orderBy('start','asc')).valueChanges();
   }

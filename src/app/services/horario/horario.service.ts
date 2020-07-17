@@ -36,6 +36,13 @@ export class HorarioService {
       })
     })
   }
+  getHorarioExisteAmigo(id): Promise<any> {
+    return new Promise(async (resolve, reject) => {
+      this.afs.collection("users").doc(id).collection('horario').ref.where('status', '==', true).get().then(returnDocumentsWithId).then(res => {
+        resolve(res[0])
+      })
+    })
+  }
   eliminaHorario(id): Promise<any> {
     return new Promise(async (resolve, reject) => {
       this.afs.collection("users").doc(this.uid).collection('horario').doc(id).delete().then(res=>{

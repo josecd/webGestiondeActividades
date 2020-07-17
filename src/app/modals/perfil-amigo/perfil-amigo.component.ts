@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { Subject } from 'rxjs';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-perfil-amigo',
@@ -12,14 +13,21 @@ export class PerfilAmigoComponent implements OnInit {
 
   formControl: FormGroup
 
+  dataUser
 
   private unSubscribe$ = new Subject<void>();
 
   constructor(
     public formBuilder: FormBuilder,
     public dialogRef: MatDialogRef<PerfilAmigoComponent>,
+    @Inject(MAT_DIALOG_DATA) public data,
+    private router: Router,
 
-  ) { }
+   
+  ) { 
+    console.log(data);
+    this.dataUser = data
+  }
 
   ngOnInit(): void {
     this.LoginForm()
@@ -44,6 +52,17 @@ export class PerfilAmigoComponent implements OnInit {
         )
       },
     );
+  }
+
+  verPerfil(){
+    // this.close()
+    this.router.navigate(['/tareas',this.dataUser.idAmigo]);
+    this.close();
+  }
+
+  verHorario(){
+    this.router.navigate(['/horario',this.dataUser.idAmigo]);
+    this.close();
   }
 
   close() {

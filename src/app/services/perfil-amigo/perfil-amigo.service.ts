@@ -21,4 +21,10 @@ export class PerfilAmigoService {
     return this.afs.collection("users").doc(id).valueChanges();
   }
 
+  getUsuario() {
+    return this.afs.collection("users").doc(this.uid).valueChanges();
+  }
+  getTareasPendientes(){
+    return this.afs.collection("users").doc(this.uid).collection('tareas',ref=>ref.where('isDeleted','==',false).orderBy('start','asc')).valueChanges();
+  }
 }

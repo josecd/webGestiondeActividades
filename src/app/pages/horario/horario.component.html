@@ -3,7 +3,7 @@
         <div class="col-sm-8">
             <h2 id="Horario"><b>Horario</b></h2>
         </div>
-            <form  [formGroup]="archivoForm" class="col-sm-4 forme-archive">
+            <form  *ngIf="!idAmigo"  [formGroup]="archivoForm" class="col-sm-4 forme-archive">
                 <div class="file-field">
                   <div class="btn btn-primary btn-sm float-left">
                     <span>{{archivoForm.value.archivo}}</span>
@@ -12,7 +12,7 @@
                 </div>
               </form>
         </div>
-        <form class="forme">
+        <form *ngIf="!idAmigo"  class="forme">
           <div *ngIf="estadoImg === true" class="btn btn-primary btn-sm btn-quitar">
             <button   (click)="eliminarHorario()" >Quitar imagen</button>
 

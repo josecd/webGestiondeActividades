@@ -1,12 +1,15 @@
+import { takeUntil } from 'rxjs/operators';
+import { ActivatedRoute } from '@angular/router';
 import { AnadirAmigosComponent } from './../../modals/anadir-amigos/anadir-amigos.component';
 import { MateriasService } from './../../services/materias/materias.service';
 import { Component, OnInit } from '@angular/core';
 import { AgregarTareaComponent } from '../../modals/modal-tareas/agregar-tarea/agregar-tarea.component';
-import { Observable, Subscription } from 'rxjs';
+import { Observable, Subscription, Subject } from 'rxjs';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { TareasService } from '../../services/tareas/tareas.service';
 import Swal from 'sweetalert2';
+import { id } from 'date-fns/locale';
 @Component({
   selector: 'app-tareas',
   templateUrl: './tareas.component.html',
@@ -14,6 +17,7 @@ import Swal from 'sweetalert2';
 })
 
 export class TareasComponent implements OnInit {
+  private unSubscribe$ = new Subject<void>();
 
   //Variables del modal
   //Create
@@ -31,17 +35,29 @@ export class TareasComponent implements OnInit {
   tamanio
   //Tabla de carga
   statuss = '1'
+  id
   constructor(
     private _tareas: TareasService,
     public formBuilder: FormBuilder,
     public dialog: MatDialog,
-    private _materias: MateriasService
-  ) { }
+    private _materias: MateriasService,
+    private route: ActivatedRoute,
+
+  ) {
+    this.id = this.route.snapshot.paramMap.get("id");
+
+   }
 
 
   ngOnInit(): void {
-    this.loadMaterias();
-    this.loadTareas();
+    if (!this.id) {
+      this.loadMaterias();
+      this.loadTareas();
+    } else {
+      this.loadTareasAmigo();
+      
+    }
+
   }
 
   //Destruir procesos una vez fuera del componente
@@ -49,8 +65,19 @@ export class TareasComponent implements OnInit {
     if (this.tareasSub) {
       this.tareasSub.unsubscribe();
     }
+    this.unSubscribe$.next();
+    this.unSubscribe$.complete();
   }
 
+  loadTareasAmigo(){
+    this._tareas.getTareasAmigo(this.id)
+    .pipe(
+      takeUntil(this.unSubscribe$)
+    )
+    .subscribe(data => {
+      this.tareas = data
+    })
+  }
 
   //Load tareas
   loadTareas() {

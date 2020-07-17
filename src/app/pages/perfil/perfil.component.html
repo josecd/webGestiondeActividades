@@ -1,57 +1,61 @@
 <body class="profile-page sidebar-collapse">
 
+  <!-- End Navbar -->
   <div class="wrapper">
-    <div class="page-header clear-filter" filter-color="blue">
+    <div class="page-header clear-filter" filter-color="orange">
       <div class="page-header-image" data-parallax="true"
-      style="background-image:url('https://images.unsplash.com/photo-1476984251899-8d7fdfc5c92c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3700&q=80');">
+        >
       </div>
       <div class="container">
-
-
-        <div class="col-md-4">
-        <div class="profile-img">
-
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog" alt=""/>
-
-            <div class="file btn btn-lg btn-primary">
-                Change Photo
-                <input type="file" name="file"/>
-            </div>
+        <div class="photo-container">
+          <img src="{{dataUser.urlPerfil}}" alt="">
         </div>
-        </div>
-
-        <h3 class="title">Itzel usuario</h3>
-        <p class="category" type="mail">itzel@mail.com</p>
+        <h3 class="title">{{dataUser.nombre}}</h3>
+        <p class="category">{{dataUser.codigoUsuario}}</p>
         <div class="content">
           <div class="social-description">
+            <h2>{{tareasPendientes}}</h2>
+            <p>Tareas pendientes</p>
+          </div>
+          <!-- <div class="social-description">
             <h2>26</h2>
-            <p>Tareas Terminadas</p>
-          </div>
-          <div class="social-description">
-            <h2>26</h2>
-            <p>Tareas Pendientes</p>
-          </div>
-          <div class="social-description">
-            <h2>48</h2>
-            <p>Tareas por Equipo</p>
-          </div>
+            <p>Tareas en proceso</p>
+          </div> --> 
         </div>
-
       </div>
-
-      </div>
-      <h3 class="title">Amigos</h3>
-
-      <h5 class="amigos">Andrea Gutierrez</h5>
-      <h5 class="amigos">José Cordero</h5>
-
-
-
-
-
-
     </div>
+    <div class="section">
+      <div class="container">
+        <div class="button-container">
+          <a (click)="buscarAmigo()"  class="btn btn-primary btn-round btn-lg">Buscar amigos</a>
+          <!-- <a href="#button" class="btn btn-default btn-round btn-lg btn-icon" rel="tooltip"
+            title="Follow me on Twitter">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="#button" class="btn btn-default btn-round btn-lg btn-icon" rel="tooltip"
+            title="Follow me on Instagram">
+            <i class="fab fa-instagram"></i>
+          </a> -->
+        </div>
+        <h3 class="title">Amigos </h3>
+        <!-- <h5 class="description">An artist of considerable range, Ryan — the name taken by Melbourne-raised,
+          Brooklyn-based Nick Murphy — writes, performs and records all of his own music, giving it a warm, intimate
+          feel with a solid groove structure. An artist of considerable range.</h5> -->
+        <div>
+          <app-ver-amigos  ></app-ver-amigos>
+        </div>
+      </div>
+    </div>
+  </div>
 
+  <script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js"
+    integrity="sha384-fA23ZRQ3G/J53mElWqVJEGJzU0sTs+SvzG8fXVWP+kJQ1lwFAOkcUOysnlKJC33U"
+    crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js"
+    integrity="sha384-CauSuKpEqAFajSpkdjv3z9t8E7RlpJ1UP0lKM/+NdtSarroVKu069AlsRPKkFBz9"
+    crossorigin="anonymous"></script>
 
+    <button (click)="copyToClipboard(sharableLink)" >Copy link</button>
+    <input type="text" value="This is the value to copy" #sharableLink >
 
-  </body>
+</body>

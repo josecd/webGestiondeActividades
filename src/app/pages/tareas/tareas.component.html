@@ -4,7 +4,7 @@
   </div>
   <div class="card-body">
 
-    <div class="btn-tareas">
+    <div *ngIf="!id"  class="btn-tareas">
       <!-- <label class="form-control-label" for="input-last-name">Materia</label> -->
       <mat-form-field>
         <mat-label>Seleccionar</mat-label>
@@ -14,14 +14,16 @@
         </mat-select>
       </mat-form-field>
       <button type="button" class="btn btn-primary" (click)="filter()">Filtrar</button>
-      <button type="button" class="btn btn-primary" (click)="buscarAmigo()">Buscar</button>
+      <!-- <button type="button" class="btn btn-primary" (click)="buscarAmigo()">Buscar</button> -->
 
       <!-- <button type="button" class="btn btn-primary" (click)="openCrearTarea()">Agregar Tareas</button> -->
     </div>
 
     <blockquote class="blockquote mb-0">
       <div class="my-3 p-3 bg-white rounded shadow-sm">
-        <h6 class="border-bottom border-gray pb-2 mb-0">Tus tareas...</h6>
+        <h6 *ngIf="!id"  class="border-bottom border-gray pb-2 mb-0">Tus tareas...</h6>
+        <h6 *ngIf="id"  class="border-bottom border-gray pb-2 mb-0">Tareas...</h6>
+
 
         <div class="media text-muted pt-3" *ngFor="let item of tareas">
           <svg class="bd-placeholder-img mr-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg"
@@ -36,14 +38,18 @@
             {{item.start | date: 'dd-MM-yyyy'}}
           </p>
 
-          <button (click)="eliminarTarea(item._id)" type="button" class="btn btn-primary">Eliminar</button>
-          <button (click)="openActualizar(item)" type="button" class="btn btn-primary">Actualizar</button>
+          <button *ngIf="!id"  (click)="eliminarTarea(item._id)" type="button" class="btn btn-primary">Eliminar</button>
+          <button *ngIf="!id" (click)="openActualizar(item)" type="button" class="btn btn-primary">Actualizar</button>
 
         </div>
 
         <div *ngIf="tareas?.length == 0">
-          <h5 style="text-align: center; color: rgb(103, 106, 108);padding: 35px;">
+          <h5 *ngIf="!id" style="text-align: center; color: rgb(103, 106, 108);padding: 35px;">
             No hay tareas agregadas
+          </h5>
+
+          <h5 *ngIf="id"  style="text-align: center; color: rgb(103, 106, 108);padding: 35px;">
+            No hay tareas del amigo agregadas
           </h5>
         </div>
 
@@ -52,4 +58,3 @@
 
         </app-loading>
         <!-- <a data-action="share/whatsapp/share" href="whatsapp://send?text=Hola%20Como%20Estas">Compartir en WhatsApp</a> -->
-        <app-ver-amigos></app-ver-amigos>

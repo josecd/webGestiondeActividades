@@ -20,7 +20,7 @@ export class HomeComponent implements OnInit {
 
   buscarPerfilAmigo() {
     this.dialog.open(PerfilAmigoComponent, {
-      width: "500px"
+      // width: "500px"
     })
   }
 }

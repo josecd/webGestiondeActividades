@@ -1,8 +1,11 @@
+import { PerfilAmigoComponent } from './../../modals/perfil-amigo/perfil-amigo.component';
+import { MatDialog } from '@angular/material/dialog';
 import { takeUntil } from 'rxjs/operators';
 import { AmigosService } from './../../services/amigos/amigos.service';
 import { Component, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-ver-amigos',
@@ -10,11 +13,13 @@ import Swal from 'sweetalert2';
   styleUrls: ['./ver-amigos.component.scss']
 })
 export class VerAmigosComponent implements OnInit {
-  
+
   private unSubscribe$ = new Subject<void>();
   dataSource
   constructor(
-    private _amigos: AmigosService
+    private _amigos: AmigosService,
+    private router: Router,
+    public dialog: MatDialog,
   ) { }
 
   ngOnInit(): void {
@@ -26,27 +31,27 @@ export class VerAmigosComponent implements OnInit {
     this.unSubscribe$.complete();
   }
 
-  getAmigos(){
-       this._amigos.getAmigos()
-        .pipe(
-          takeUntil(this.unSubscribe$)
-        )
-        .subscribe(users => {
-          this.dataSource= []
-          users.forEach(async element => {
-             this._amigos.getUsuarioPorID(element.idAmigo).pipe(
-              takeUntil(this.unSubscribe$)
-            )
-            .subscribe((userss :any)  => {
+  getAmigos() {
+    this._amigos.getAmigos()
+      .pipe(
+        takeUntil(this.unSubscribe$)
+      )
+      .subscribe(users => {
+        this.dataSource = []
+        users.forEach(async element => {
+          this._amigos.getUsuarioPorID(element.idAmigo).pipe(
+            takeUntil(this.unSubscribe$)
+          )
+            .subscribe((userss: any) => {
               let data = userss;
               if (element.idAmigo === data._id) {
-                  element.nombreUsuario = data.nombre
-                  element.codigoUsuario = userss.codigoUsuario
+                element.nombreUsuario = data.nombre
+                element.codigoUsuario = userss.codigoUsuario
               }
             })
-          });
-          this.dataSource = users  
-        })
+        });
+        this.dataSource = users
+      })
   }
   eliminarTarea(idAmigo) {
     Swal.fire({
@@ -77,22 +82,28 @@ export class VerAmigosComponent implements OnInit {
       }
     })
   }
-  aceptarAmigo(idAmigo){ 
+  aceptarAmigo(idAmigo) {
     console.log('dd');
     console.log(idAmigo);
-    
-    this._amigos.aceptarAmigo(idAmigo._id, idAmigo.idAmigo)
-    .then(res=>{
-      Swal.fire(
-        'Agregado!',
-        'Amigo agregado',
-        'success'
-      )
 
-    }).catch(erros=>{
-      console.warn(erros);
-      
-    })
+    this._amigos.aceptarAmigo(idAmigo._id, idAmigo.idAmigo)
+      .then(res => {
+        Swal.fire(
+          'Agregado!',
+          'Amigo agregado',
+          'success'
+        )
+
+      }).catch(erros => {
+        console.warn(erros);
+
+      })
   }
 
+  verPerfil(data) {
+    this.dialog.open(PerfilAmigoComponent, {
+      // width: "500px"
+      data: data
+    })
+  }
 }
