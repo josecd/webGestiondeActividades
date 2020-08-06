@@ -32,6 +32,8 @@ export class MateriasService {
         _id:idMateria,
         nombreMateria:form.nombreMateria,
         nombreMaestro:form.nombreMaestro,
+        nombreCorreo:form.nombreCorreo,
+        nombreLink:form.nombreLink,
         created_at: new Date(),
         updated_at: new Date(),
         status: true,
@@ -49,6 +51,8 @@ export class MateriasService {
       this.afs.collection("users").doc(this.uid).collection("materias").doc(idMateria).update({
         nombreMateria:form.nombreMateria,
         nombreMaestro:form.nombreMaestro,
+        nombreCorreo:form.nombreCorreo,
+        nombreLink:form.nombreLink,
         updated_at: new Date(),
       }).then(res=>{ 
         resolve(res)

@@ -43,8 +43,22 @@ export class AgregarmateriaComponent implements OnInit {
             this.dataMateria.nombreMaestro,
             Validators.compose([
               Validators.required
-            ])
-          )
+            ]),
+          ),
+            // Agregando correo y zoom
+            nombreCorreo: new FormControl(
+              this.dataMateria.nombreCorreo,
+              Validators.compose([
+                Validators.required
+              ]),
+            ),
+              nombreLink: new FormControl(
+                this.dataMateria.nombreLink,
+                Validators.compose([
+                  Validators.required
+                ])
+          ),
+
         }
       )
      }else{
@@ -60,7 +74,19 @@ export class AgregarmateriaComponent implements OnInit {
             '',
             Validators.compose([
               Validators.required
-            ])
+            ]),
+           ),
+            nombreCorreo: new FormControl(
+              '',
+              Validators.compose([
+                Validators.required
+              ]),
+            ),
+              nombreLink: new FormControl(
+                '',
+                Validators.compose([
+                  Validators.required
+                ])
           )
         }
       )
