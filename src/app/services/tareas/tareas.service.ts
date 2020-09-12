@@ -27,7 +27,7 @@ export class TareasService {
   }
 
   getTareasByMateria(idMateria){
-    return this.afs.collection("users").doc(this.uid).collection('tareas',ref=>ref.where('isDeleted','==',false).where('idMateria','==',idMateria).orderBy('start','asc')).valueChanges();
+    return this.afs.collection("users").doc(this.uid).collection('tareas',ref=>ref.where('isDeleted','==',false).where('materia','==',idMateria).orderBy('start','asc')).valueChanges();
   } 
 
   addTarea(form): Promise<any>{
@@ -51,8 +51,8 @@ export class TareasService {
   updateTarea(idTarea,form): Promise<any>{
     return new Promise(async (resolve, reject) => {
       this.afs.collection("users").doc(this.uid).collection("tareas").doc(idTarea).update({
-        nombreTarea:form.nombreTarea,
-        nombreMaestro:form.nombreMaestro,
+        title:form.nombreTarea,
+        name:form.nombreMaestro,
         updated_at: new Date(),
       }).then(res=>{ 
         resolve(res)
@@ -82,5 +82,37 @@ export class TareasService {
         reject(error)
       })
     })
+  }
+
+  activarTarea(idTarea): Promise<any>{
+    return new Promise(async (resolve, reject) => {
+      this.afs.collection("users").doc(this.uid).collection("tareas").doc(idTarea).update({
+        status:true
+      }).then(res=>{ 
+        resolve(res)
+      }).catch(error=>{
+        reject(error)
+      })
+    })
+  }
+
+  copyEvento(data) : Promise<any>{
+    return new Promise(async (resolve, reject) => {
+    const id =this.afs.createId();
+    this.afs.collection("users").doc(this.uid).collection('tareas').doc(id).set({
+      _id:id,
+      name:data.name,
+      title:data.title,
+      materia: data.materia,
+      start:data.start,
+      end:data.end,
+      // idMateria:data.materia._id,
+      created_at: new Date(),
+      updated_at: new Date(),
+      status: true,
+      isDeleted: false
+    }).then(res=> resolve(res))
+      .catch(error=> reject(error))
+  });
   }
 }

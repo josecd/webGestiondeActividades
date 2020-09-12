@@ -4,82 +4,98 @@
   </div>
   <div class="card-body">
 
-    <div *ngIf="!id"  class="btn-tareas float-right">
+    <div *ngIf="!id" class="btn-tareas float-right">
       <!-- <label class="form-control-label" for="input-last-name">Materia</label> -->
-      <mat-form-field>
+      <!-- <mat-form-field>
         <mat-label>Seleccionar</mat-label>
         <mat-select [(ngModel)]="statuss">
           <mat-option value="1">Todas las materias</mat-option>
           <mat-option *ngFor="let item of materias" [value]="item._id">{{item.nombreMateria}}</mat-option>
         </mat-select>
       </mat-form-field>
-      <button type="button" class="btn btn-primary " (click)="filter()">Filtrar</button>
+      <button type="button" class="btn btn-primary " (click)="filter()">Filtrar</button> -->
       <!-- <button type="button" class="btn btn-primary" (click)="buscarAmigo()">Buscar</button> -->
 
       <!-- <button type="button" class="btn btn-primary" (click)="openCrearTarea()">Agregar Tareas</button> -->
+      <mat-form-field class="example-full-width">
+        <mat-label>Filtrar</mat-label>
+        <input matInput placeholder="Ingresa materia" value=" " [(ngModel)]="filterPost">
+      </mat-form-field>
+
     </div>
 
     <blockquote class="blockquote mb-0">
       <div class="my-3 p-3 bg-white rounded shadow-sm">
-        <h6 *ngIf="!id"  class="border-bottom border-gray pb-2 mb-0">Tareas pendientes</h6>
-        <h6 *ngIf="id"  class="border-bottom border-gray pb-2 mb-0">Tareas...</h6>
+        <h6 *ngIf="!id" class="border-bottom border-gray pb-2 mb-0">Tareas pendientes</h6>
+        <h6 *ngIf="id" class="border-bottom border-gray pb-2 mb-0">Tareas...</h6>
 
 
-<!-- MI INVENTO -->
+        <!-- MI INVENTO -->
 
-<div class="container">
-  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4">
-    <div class="col" *ngFor="let item of tareas" style="min-width: 13em;">
+        <div class="container">
+          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4">
+            <div class="col" *ngFor="let item of tareas | pipesFilters:filterPost" style="min-width: 13em;">
+              <div *ngIf="item.status === true" >
+              <div class="card bg-light mb-3 mt-3">
+                <div class="card-header "><button *ngIf="!id" (click)="desactivarTarea(item._id)" type="button"
+                    class="close "><i class="fas fa-check-square"></i></button>{{item.materia}}</div>
+                <div class="card-body" style="height: 266px;">
+                  <h5 class="card-title">{{item.title}}</h5>
+                  <p class="card-text" class="puntitos">{{item.name}}</p>
+                  <p class="card-text"><small class="text-muted">Entrega:
+                      {{item.start *1000 | date: 'd / M, h:mm a'}}</small></p>
 
-    <div class="card bg-light mb-3 mt-3">
-      <div class="card-header " ><button *ngIf="!id" (click)="desactivarTarea(item._id)" type="button" class="close "><i class="fas fa-check-square"></i></button>{{item.materia}}</div>
-      <div class="card-body" style="height: 266px;">
-        <h5 class="card-title">{{item.title}}</h5>
-        <p class="card-text" class="puntitos">{{item.name}}</p>
-        <p class="card-text"><small class="text-muted">Entrega: {{item.start *1000 | date: 'd / M, h:mm a'}}</small></p>
+                  <button *ngIf="!id" (click)="openActualizar(item)" type="button"
+                    class="btn btn-primary float-right "><i class="fas fa-edit"></i> </button>
+                  <button *ngIf="!id" type="button" class="btn btn-success float-right"><i
+                      class="fas fa-eye"></i></button>
+                  <button *ngIf="id" (click)="copyTarea(item)" type="button" class="btn btn-primary float-right"><i
+                      class="fas fa-copy"></i></button>
+                </div>
+              </div>
+            </div>
+            </div>
+          </div>
 
-      <button *ngIf="!id" (click)="openActualizar(item)" type="button" class="btn btn-primary float-right "><i class="fas fa-edit"></i> </button>
-      <button type="button" class="btn btn-success float-right" ><i class="fas fa-eye"></i></button>
-      <button *ngIf="!id"  (click)="eliminarTarea(item._id)" type="button" class="btn btn-primary float-right"><i class="fas fa-copy"></i></button>
-  </div>
-</div>
-</div>
-</div>
+          <!-- TAREAS ORIGINAL -->
 
-<!-- TAREAS ORIGINAL -->
+          <h6 *ngIf="!id" class="border-bottom border-gray pb-2 mb-0">Historial de tareas</h6>
+          <div *ngFor="let item of tareas | pipesFilters:filterPost">
+            <div class="media text-muted pt-3" *ngIf="item.status === false" >
+            
+              <svg class="bd-placeholder-img mr-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg"
+                preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 32x32">
+                <title>Placeholder</title>
+                <rect width="100%" height="100%" fill="#007bff"></rect><text x="50%" y="50%" fill="#007bff"
+                  dy=".3em">32x32</text>
+              </svg>
+              <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+                <strong class="d-block text-gray-dark">{{item.title}}// Empieza:
+                  {{item.start *1000 | date: 'd / M, h:mm a'}}</strong>
+                {{item.name}}
+                {{item.start | date: 'dd-MM-yyyy'}}
+              </p>
+              <!-- <button *ngIf="!id" (click)="openActualizar(item)" type="button" class="btn btn-success"><i class="fas fa-check-square"></i> Tarea realizada</button>
+            <button *ngIf="!id" (click)="openActualizar(item)" type="button" class="btn btn-primary"><i class="fas fa-edit"></i> </button> -->
+              <button *ngIf="!id" (click)="eliminarTarea(item._id)" type="button" class="btn btn-danger"><i
+                  class="fas fa-trash-alt"></i></button>
+  
+            </div>
+          </div>
 
-    <h6 *ngIf="!id"  class="border-bottom border-gray pb-2 mb-0">Historial de tareas</h6>
 
-        <div class="media text-muted pt-3" *ngFor="let item of tareas">
-          <svg class="bd-placeholder-img mr-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg"
-            preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 32x32">
-            <title>Placeholder</title>
-            <rect width="100%" height="100%" fill="#007bff"></rect><text x="50%" y="50%" fill="#007bff"
-              dy=".3em">32x32</text>
-          </svg>
-          <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-            <strong class="d-block text-gray-dark">{{item.title}}// Empieza: {{item.start *1000 | date: 'd / M, h:mm a'}}</strong>
-            {{item.name}}
-            {{item.start | date: 'dd-MM-yyyy'}}
-          </p>
-          <!-- <button *ngIf="!id" (click)="openActualizar(item)" type="button" class="btn btn-success"><i class="fas fa-check-square"></i> Tarea realizada</button>
-          <button *ngIf="!id" (click)="openActualizar(item)" type="button" class="btn btn-primary"><i class="fas fa-edit"></i> </button> -->
-          <button *ngIf="!id"  (click)="eliminarTarea(item._id)" type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
+          <div *ngIf="tareas?.length == 0">
+            <h5 *ngIf="!id" style="text-align: center; color: rgb(103, 106, 108);padding: 35px;">
+              No hay tareas agregadas
+            </h5>
 
-        </div>
+            <h5 *ngIf="id" style="text-align: center; color: rgb(103, 106, 108);padding: 35px;">
+              No hay tareas del amigo agregadas
+            </h5>
+          </div>
 
-        <div *ngIf="tareas?.length == 0">
-          <h5 *ngIf="!id" style="text-align: center; color: rgb(103, 106, 108);padding: 35px;">
-            No hay tareas agregadas
-          </h5>
+          <!-- Reutilizando componente Loading -->
+          <app-loading *ngIf="!tareas">
 
-          <h5 *ngIf="id"  style="text-align: center; color: rgb(103, 106, 108);padding: 35px;">
-            No hay tareas del amigo agregadas
-          </h5>
-        </div>
-
-        <!-- Reutilizando componente Loading -->
-        <app-loading *ngIf="!tareas">
-
-        </app-loading>
-        <!-- <a data-action="share/whatsapp/share" href="whatsapp://send?text=Hola%20Como%20Estas">Compartir en WhatsApp</a> -->
+          </app-loading>
+          <!-- <a data-action="share/whatsapp/share" href="whatsapp://send?text=Hola%20Como%20Estas">Compartir en WhatsApp</a> -->

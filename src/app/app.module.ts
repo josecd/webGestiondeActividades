@@ -1,3 +1,4 @@
+import { PipesFiltersPipe } from './pipes/pipes-filters/pipes-filters';
 import { MaterialModule } from './material-module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -49,6 +50,7 @@ import localeEs from '@angular/common/locales/es';
 import { es } from 'date-fns/locale';
 import { PerfilAmigoService } from './services/perfil-amigo/perfil-amigo.service';
 import { PerfilAmigoComponent } from './modals/perfil-amigo/perfil-amigo.component';
+import { PipesModule } from './pipes/pipes.module';
 registerLocaleData(localeEs, 'es');
 @NgModule({
   declarations: [
@@ -93,9 +95,10 @@ registerLocaleData(localeEs, 'es');
     NgbModule,
     MaterialModule,
     BrowserAnimationsModule,
-    NgxMaterialTimepickerModule
+    NgxMaterialTimepickerModule,
+    PipesModule
   ],
-  providers: [{ provide: es, useValue: 'es'}, CalendarComponent],
+  providers: [{ provide: es, useValue: 'es'}, CalendarComponent,PipesFiltersPipe],
   bootstrap: [AppComponent,CalendarComponent]
 })
 export class AppModule { }

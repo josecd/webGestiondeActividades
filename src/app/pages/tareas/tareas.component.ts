@@ -36,6 +36,9 @@ export class TareasComponent implements OnInit {
   //Tabla de carga
   statuss = '1'
   id
+
+  filterPost = '';
+
   constructor(
     private _tareas: TareasService,
     public formBuilder: FormBuilder,
@@ -189,5 +192,37 @@ export class TareasComponent implements OnInit {
     })
   }
 
+  copyTarea(item){
+    console.warn(item);
+    Swal.fire({
+      title: '¿Estás seguro de copiar la tarea?',
+      text: "¡No podrás revertirlo!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: '¡Si, copiar!',
+      cancelButtonText: 'Cancelar'
+    }).then((result) => {
+      if (result.value) {
+        this._tareas.copyEvento(item).then(res => {
+          Swal.fire(
+            'Tarea copiada',
+            'La tarea ha sido funada',
+            'success'
+          )
 
+        })
+          .catch(error => {
+            Swal.fire(
+              'Deleted!',
+              'Your file has been deleted.',
+              'error'
+            )
+
+          })
+
+      }
+    })
+  }
 }

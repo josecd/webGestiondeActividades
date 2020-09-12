@@ -23,6 +23,7 @@ export class AgregarTareaComponent implements OnInit {
 
   ) {
    this.dataTarea = data;
+    console.log(data);
     
    }
 
@@ -36,13 +37,13 @@ export class AgregarTareaComponent implements OnInit {
      this.tareaForm =this.formBuilder.group(
        {
          nombreTarea: new FormControl(
-           this.dataTarea.nombreTarea,
+           this.dataTarea.title,
            Validators.compose([
              Validators.required
            ])
          ),
          nombreMaestro: new FormControl(
-           this.dataTarea.nombreMaestro,
+           this.dataTarea.name,
            Validators.compose([
              Validators.required
            ])
