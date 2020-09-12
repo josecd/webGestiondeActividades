@@ -1,31 +1,34 @@
 .card-header {
-
     padding: 1rem;
     padding-left: 50%;
     background-color: rgba(0, 0, 0, 0.03);
     border-bottom: 1px solid rgba(0, 0, 0, 0.125);
-
 }
 
-.btn-group{
+.btn-group {
     // padding-left: 65%;
 }
 
-.btn-tareas{
+.btn-tareas {
     // padding-left: 88%;
 }
 
-.card-header{
+.card-header {
     padding-left: 0em;
     text-align: center;
 }
 
-.close{
+.close {
     color: green;
 }
 
-
-.container{
+.container {
     margin-left: initial;
 }
 
+.puntitos {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
