@@ -72,4 +72,15 @@ export class TareasService {
       })
     })
   }
+  desactivarTarea(idTarea): Promise<any>{
+    return new Promise(async (resolve, reject) => {
+      this.afs.collection("users").doc(this.uid).collection("tareas").doc(idTarea).update({
+        status:false
+      }).then(res=>{ 
+        resolve(res)
+      }).catch(error=>{
+        reject(error)
+      })
+    })
+  }
 }

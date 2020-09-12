@@ -153,8 +153,41 @@ export class TareasComponent implements OnInit {
 
       }
     })
-
-
   }
+
+
+  desactivarTarea(id) {
+    Swal.fire({
+      title: '¿Estás seguro de desactivar la tarea?',
+      text: "¡No podrás revertirlo!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: '¡Si, eliminar!',
+      cancelButtonText: 'Cancelar'
+    }).then((result) => {
+      if (result.value) {
+        this._tareas.desactivarTarea(id).then(res => {
+          Swal.fire(
+            'Desactivada',
+            'Tu tarea ha sido desactivada',
+            'success'
+          )
+
+        })
+          .catch(error => {
+            Swal.fire(
+              'Deleted!',
+              'Your file has been deleted.',
+              'error'
+            )
+
+          })
+
+      }
+    })
+  }
+
 
 }
