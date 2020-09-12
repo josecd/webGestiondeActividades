@@ -13,7 +13,7 @@
         <h3 class="title">{{dataUser.nombre}}</h3>
         <p class="category">
           <input class="codigouser" type="text" value={{dataUser.codigoUsuario}} #sharableLink readonly >  
-          <button class="btn  btn-round " (click)="copyToClipboard(sharableLink)" >Copia el ID</button>
+          <button class="btn  btn-round " (click)="copyToClipboard(sharableLink)" ><i class="far fa-copy"></i> Copia el ID</button>
            <!-- {{dataUser.codigoUsuario}} -->
           </p>   
         <div class="content">
@@ -31,7 +31,7 @@
     <div class="section">
       <div class="container">
         <div class="button-container">
-          <a (click)="buscarAmigo()"  class="btn btn-primary btn-round btn-lg"><b>Buscar amigos</b></a>
+          <a (click)="buscarAmigo()"  class="btn btn-primary btn-round btn-lg"><b>Buscar amigos  </b> <i class="fas fa-search"></i></a>
           <!-- <a href="#button" class="btn btn-default btn-round btn-lg btn-icon" rel="tooltip"
             title="Follow me on Twitter">
             <i class="fab fa-twitter"></i>

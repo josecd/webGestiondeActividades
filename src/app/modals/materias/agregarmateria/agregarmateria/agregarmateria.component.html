@@ -2,7 +2,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
         <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Materias</h5>
+            <h5 class="modal-title" id="exampleModalLabel">Agregar Materia</h5>
             <button type="button" class="close" (click)="close()">
             <span aria-hidden="true">&times;</span>
             </button>
@@ -33,8 +33,8 @@
         
         <div class="modal-footer">
             <button (click)="close()" type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-            <button *ngIf="!dataMateria" [disabled]="!materiaForm.valid" type="button" class="btn btn-primary" (click)="addMateria()" >Agregar Materia</button>
-            <button *ngIf="dataMateria" [disabled]="!materiaForm.valid" type="button" class="btn btn-primary" (click)="updateMateria()" >Actualizar Materia</button>
+            <button *ngIf="!dataMateria" [disabled]="!materiaForm.valid" type="button" class="btn btn-primary" (click)="addMateria()" ><i class="fas fa-plus-circle"></i> Agregar Materia</button>
+            <button *ngIf="dataMateria" [disabled]="!materiaForm.valid" type="button" class="btn btn-danger" (click)="updateMateria()" >Actualizar Materia</button>
 
         </div>
         </div>
