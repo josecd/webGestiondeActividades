@@ -39,13 +39,17 @@
         <p class="card-text"><small class="text-muted">Entrega: {{item.start *1000 | date: 'd / M, h:mm a'}}</small></p>
 
       <button *ngIf="!id" (click)="openActualizar(item)" type="button" class="btn btn-primary float-right "><i class="fas fa-edit"></i> </button>
-      <button *ngIf="!id"  (click)="eliminarTarea(item._id)" type="button" class="btn btn-danger float-right"><i class="fas fa-trash-alt"></i></button>
+      <button type="button" class="btn btn-success float-right" ><i class="fas fa-eye"></i></button>
+      <button *ngIf="!id"  (click)="eliminarTarea(item._id)" type="button" class="btn btn-primary float-right"><i class="fas fa-copy"></i></button>
   </div>
 </div>
 </div>
 </div>
 
 <!-- TAREAS ORIGINAL -->
+
+    <h6 *ngIf="!id"  class="border-bottom border-gray pb-2 mb-0">Historial de tareas</h6>
+
         <div class="media text-muted pt-3" *ngFor="let item of tareas">
           <svg class="bd-placeholder-img mr-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg"
             preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 32x32">
