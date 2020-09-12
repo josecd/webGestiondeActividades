@@ -18,7 +18,8 @@
           </p>   
         <div class="content">
           <div class="social-description">
-            <h2>{{tareasPendientes}}</h2>
+            <h2 *ngIf="tareasPendientes != 0">{{tareasPendientes}}</h2>
+            <h2 *ngIf="tareasPendientes === 0" >0</h2>
             <p>Tareas pendientes</p>
           </div>
           <!-- <div class="social-description">

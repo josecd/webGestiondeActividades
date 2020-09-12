@@ -78,21 +78,18 @@ export class TareasComponent implements OnInit {
       takeUntil(this.unSubscribe$)
     )
     .subscribe(data => {
+      this.tareas =[]
       this.tareas = data
     })
   }
 
   //Load tareas
   loadTareas() {
-    if (this.statuss === '1') {
-      this.tareasObs$ = this._tareas.getTareas();
-
-    } else {
-      this.tareasObs$ = this._tareas.getTareasByMateria(this.statuss);
-    }
+    this.tareasObs$ = this._tareas.getTareas();
     this.tareasSub = this.tareasObs$.subscribe(res => {
       this.tareas = res;
-
+      console.log(this.tareas);
+      
     })
   }
 
