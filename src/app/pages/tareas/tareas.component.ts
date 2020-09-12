@@ -124,8 +124,8 @@ export class TareasComponent implements OnInit {
 
   eliminarTarea(id) {
     Swal.fire({
-      title: '¿Estás seguro de eliminar la tarea?',
-      text: "¡No podrás revertirlo!",
+      title: '¿Estás seguro de eliminar la tarea para siempre?',
+      text: "¡Ya no aparecerá en tu historial de tareas, no podrás revertirlo!",
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
@@ -136,8 +136,8 @@ export class TareasComponent implements OnInit {
       if (result.value) {
         this._tareas.deleteTarea(id).then(res => {
           Swal.fire(
-            'Deleted!',
-            'Tu archivo ha sido eliminado',
+            'Eliminada!',
+            'Tu tarea ha sido eliminada',
             'success'
           )
 
@@ -158,20 +158,20 @@ export class TareasComponent implements OnInit {
 
   desactivarTarea(id) {
     Swal.fire({
-      title: '¿Estás seguro de desactivar la tarea?',
-      text: "¡No podrás revertirlo!",
+      title: '¿Estás seguro de marcar la tarea como finalizada?',
+      text: "¡No podrás revertirlo, solo podrás verla en tu historial de tareas!",
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      confirmButtonText: '¡Si, eliminar!',
+      confirmButtonText: '¡Si, finalizar!',
       cancelButtonText: 'Cancelar'
     }).then((result) => {
       if (result.value) {
         this._tareas.desactivarTarea(id).then(res => {
           Swal.fire(
-            'Desactivada',
-            'Tu tarea ha sido desactivada',
+            'Finalizada',
+            'Tu tarea ha sido finalizada',
             'success'
           )
 

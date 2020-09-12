@@ -27,7 +27,7 @@
     <blockquote class="blockquote mb-0">
       <div class="my-3 p-3 bg-white rounded shadow-sm">
         <h6 *ngIf="!id" class="border-bottom border-gray pb-2 mb-0">Tareas pendientes</h6>
-        <h6 *ngIf="id" class="border-bottom border-gray pb-2 mb-0">Tareas...</h6>
+        <!-- <h6 *ngIf="id" class="border-bottom border-gray pb-2 mb-0">Tareas...</h6> -->
 
 
         <!-- MI INVENTO -->
@@ -55,11 +55,21 @@
               </div>
             </div>
             </div>
+            
           </div>
+          <div *ngIf="tareas?.length == 0">
+            <h5 *ngIf="!id" style="text-align: center; color: rgb(103, 106, 108);padding: 35px;">
+              No tienes tareas pendientes!
+            </h5>
 
+        </div>
+        </div>
           <!-- TAREAS ORIGINAL -->
+          <blockquote class="blockquote mb-0">
+            <div class="my-3 p-3 bg-white rounded shadow-sm">
+              <h6 *ngIf="!id" class="border-bottom border-gray pb-2 mb-0">Historial de tareas</h6>
+  
 
-          <h6 *ngIf="!id" class="border-bottom border-gray pb-2 mb-0">Historial de tareas</h6>
           <div *ngFor="let item of tareas | pipesFilters:filterPost">
             <div class="media text-muted pt-3" *ngIf="item.status === false" >
             
@@ -86,7 +96,7 @@
 
           <div *ngIf="tareas?.length == 0">
             <h5 *ngIf="!id" style="text-align: center; color: rgb(103, 106, 108);padding: 35px;">
-              No hay tareas agregadas
+              Tu historial de tareas se encuentra vacío.
             </h5>
 
             <h5 *ngIf="id" style="text-align: center; color: rgb(103, 106, 108);padding: 35px;">
