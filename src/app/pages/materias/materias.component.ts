@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 import { MateriasService } from '../../services/materias/materias.service';
@@ -22,6 +23,7 @@ export class MateriasComponent implements OnInit {
     private _materias: MateriasService,
     public formBuilder: FormBuilder,
     public dialog: MatDialog,
+    private router: Router,
 
   ) { }
 
@@ -91,4 +93,8 @@ export class MateriasComponent implements OnInit {
 
   }
 
+  gollamda(id){
+    this.router.navigate(['/llamada',id]);
+
+  }
 }

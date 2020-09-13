@@ -1,3 +1,5 @@
+import { LlamadaComponent } from './components/llamada/llamada.component';
+import { ChatComponent } from './components/chat/chat.component';
 import { AuthGuard } from './guards/auth.guard';
 import { LoginComponent } from './components/login/login/login.component';
 import { ErrorComponent } from './components/error/error/error.component';
@@ -31,6 +33,12 @@ const routes: Routes = [
 
   {path: 'horario', component: HorarioComponent,canActivate: [AuthGuard]},
   {path: 'horario/:id', component: HorarioComponent,canActivate: [AuthGuard]},
+
+  {path: 'chat', component: ChatComponent,canActivate: [AuthGuard]},
+  {path: 'llamada', component: LlamadaComponent,canActivate: [AuthGuard]},
+  {path: 'llamada/:id', component: LlamadaComponent,canActivate: [AuthGuard]},
+
+
 
 
 

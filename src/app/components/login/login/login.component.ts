@@ -49,7 +49,7 @@ export class LoginComponent implements OnInit {
     this.loginForm = this.formBuilder.group(
       {
         contrasenia: new FormControl(
-          '12345687' ,
+          '' ,
           Validators.compose([
             Validators.required,
             Validators.minLength(6),
@@ -57,7 +57,7 @@ export class LoginComponent implements OnInit {
           ])
         ),
         correo: new FormControl(
-          'test@mail.com',
+          '',
           Validators.compose([
             Validators.required,
             Validators.minLength(6),

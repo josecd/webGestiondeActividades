@@ -34,6 +34,7 @@ export class MateriasService {
         nombreMaestro:form.nombreMaestro,
         nombreCorreo:form.nombreCorreo,
         nombreLink:form.nombreLink,
+        otroLink:form.otroLink,
         created_at: new Date(),
         updated_at: new Date(),
         status: true,
@@ -53,6 +54,7 @@ export class MateriasService {
         nombreMaestro:form.nombreMaestro,
         nombreCorreo:form.nombreCorreo,
         nombreLink:form.nombreLink,
+        otroLink:form.otroLink,
         updated_at: new Date(),
       }).then(res=>{ 
         resolve(res)

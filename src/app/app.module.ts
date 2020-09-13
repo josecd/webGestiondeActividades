@@ -51,6 +51,8 @@ import { es } from 'date-fns/locale';
 import { PerfilAmigoService } from './services/perfil-amigo/perfil-amigo.service';
 import { PerfilAmigoComponent } from './modals/perfil-amigo/perfil-amigo.component';
 import { PipesModule } from './pipes/pipes.module';
+import { ChatComponent } from './components/chat/chat.component';
+import { LlamadaComponent } from './components/llamada/llamada.component';
 registerLocaleData(localeEs, 'es');
 @NgModule({
   declarations: [
@@ -77,7 +79,9 @@ registerLocaleData(localeEs, 'es');
     RecuperarContrasenaComponent,
     AnadirAmigosComponent,
     VerAmigosComponent,
-    PerfilAmigoComponent
+    PerfilAmigoComponent,
+    ChatComponent,
+    LlamadaComponent
   ],
   imports: [
     BrowserModule,

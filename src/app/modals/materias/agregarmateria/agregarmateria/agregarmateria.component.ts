@@ -55,9 +55,15 @@ export class AgregarmateriaComponent implements OnInit {
               nombreLink: new FormControl(
                 this.dataMateria.nombreLink,
                 Validators.compose([
-                  Validators.required
+                  
                 ])
           ),
+          otroLink: new FormControl(
+            this.dataMateria.otroLink,
+            Validators.compose([
+              
+            ])
+      ),
 
         }
       )
@@ -85,9 +91,15 @@ export class AgregarmateriaComponent implements OnInit {
               nombreLink: new FormControl(
                 '',
                 Validators.compose([
-                  Validators.required
+                  
                 ])
-          )
+          ),
+          otroLink: new FormControl(
+            '',
+            Validators.compose([
+              
+            ])
+      )
         }
       )
      }
