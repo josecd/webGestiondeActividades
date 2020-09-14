@@ -17,7 +17,7 @@
             <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Eliminar Materias</button> -->
             <div class="btn-materias">   
             <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@fat">Editar Materias</button> -->
-                <button type="button" class="btn btn-primary" (click)="openCrearMAteria()"><i class="fas fa-plus-circle"></i> Nueva Materia</button>
+                <button *ngIf="id" type="button" class="btn btn-primary" (click)="openCrearMAteria()"><i class="fas fa-plus-circle"></i> Nueva Materia</button>
                 <button *ngIf="user.rol ==='admin' "  type="button" class="btn btn-primary" (click)="openCrearMAteriaGrupal()"><i class="fas fa-plus-circle"></i>Materia Grupal</button>
                 
             </div>
