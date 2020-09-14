@@ -35,7 +35,7 @@
         <div class="container">
           <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4">
             <div class="col" *ngFor="let item of tareas | pipesFilters:filterPost" style="min-width: 13em;">
-              <div *ngIf="item.status === true" >
+              <div  >
               <div class="card bg-light mb-3 mt-3">
                 <div class="card-header "><button *ngIf="!id" (click)="desactivarTarea(item._id)" type="button"
                     class="close "><i class="fas fa-check-square"></i></button>{{item.materia}}</div>
@@ -70,9 +70,8 @@
               <h6 *ngIf="!id" class="border-bottom border-gray pb-2 mb-0">Historial de tareas</h6>
   
 
-          <div *ngFor="let item of tareas | pipesFilters:filterPost">
-            <div class="media text-muted pt-3" *ngIf="item.status === false" >
-            
+          <div *ngFor="let item of historialTareas | pipesFilters:filterPost">
+            <div class="media text-muted pt-3"  >
               <svg class="bd-placeholder-img mr-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg"
                 preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 32x32">
                 <title>Placeholder</title>

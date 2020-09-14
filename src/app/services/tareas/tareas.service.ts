@@ -18,12 +18,30 @@ export class TareasService {
     private afs: AngularFirestore) 
   {  } 
   
-  getTareasAmigo(id){
-    return this.afs.collection("users").doc(id).collection('tareas',ref=>ref.where('isDeleted','==',false).orderBy('start','asc')).valueChanges();
+  getAmigos(){
+    return this.afs.collection("users").doc(this.uid).collection('amigos',ref=>ref.where('isDeleted','==',false).where('status','==',true)).valueChanges();
   }
+  getMaterias(){
+    return this.afs.collection("users").doc(this.uid).collection('materias',ref=>ref.where('isDeleted','==',false).where('status','==',true)).valueChanges();
+  }
+  getTareasAmigo(id){
+    return this.afs.collection("users").doc(id).collection('tareas',ref=>ref.where('isDeleted','==',false).where('status','==',true).orderBy('start','asc')).valueChanges();
+  }
+
+  getTareasAmigoHistorial(id){
+    return this.afs.collection("users").doc(id).collection('tareas',ref=>ref.where('isDeleted','==',false).where('status','==',false).orderBy('start','asc')).valueChanges();
+  }
+
 
   getTareas(){
     return this.afs.collection("users").doc(this.uid).collection('tareas',ref=>ref.where('isDeleted','==',false).orderBy('start','asc')).valueChanges();
+  }
+
+  getTareasStatusTrue(){
+    return this.afs.collection("users").doc(this.uid).collection('tareas',ref=>ref.where('isDeleted','==',false).where('status','==',true).orderBy('start','asc')).valueChanges();
+  }
+  getTareasStatusFalse(){
+    return this.afs.collection("users").doc(this.uid).collection('tareas',ref=>ref.where('isDeleted','==',false).where('status','==',false).orderBy('start','asc')).valueChanges();
   }
 
   getTareasByMateria(idMateria){

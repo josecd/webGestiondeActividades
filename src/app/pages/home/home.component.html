@@ -38,17 +38,23 @@
 
 <div class="row news">
   <div class="col">
-    <div class="single-service">
+    <div class="single-service"  style="text-align: center;">
       <h4><span class="lnr lnr-user"></span>Materias</h4>
-      <p>
-        Aquí va un número xD
+      <p  style="text-align: center;">
+        <a *ngIf="materias" >{{materias}}</a>
+        <a *ngIf="!materias">0</a>
+
+      </p>	
     </div>
   </div>
   <div class="col">
-    <div class="single-service">
+    <div class="single-service"  style="text-align: center;">
       <h4><span class="lnr lnr-license"></span>Tareas pendientes</h4>
       
-      <p> Aquí va un número xD
+      <p style="text-align: center;"> 
+        <a *ngIf="tareas" >{{tareas}}</a>
+        <a *ngIf="!tareas">0</a>
+
         <!-- <h2 *ngIf="tareasPendientes != 0">{{tareasPendientes}}</h2>
         <h2 *ngIf="tareasPendientes === 0" >0</h2> -->
       </p>							
@@ -56,19 +62,24 @@
     </div>
   </div>
   <div class="col">
-    <div class="single-service">
+    <div class="single-service"  style="text-align: center;">
       <h4><span class="lnr lnr-phone"></span>Tareas Realizadas</h4>
-      <p>
-        Aquí va un número xD
+      <p  style="text-align: center;">
+        <a *ngIf="historialTareas" >{{historialTareas}}</a>
+        <a *ngIf="!historialTareas" >0</a>
+
+
       </p>								
     </div>
   </div>
   <div class="col">
-    <div class="single-service">
+    <div class="single-service"  style="text-align: center;">
       <h4><span class="lnr lnr-phone"></span>Amigos</h4>
-      <p>
-        Aquí va otro número xD
-      </p>								
+      <p  style="text-align: center;">
+        <a *ngIf="amigos" >{{amigos}}</a>
+        <a *ngIf="!amigos" >0</a>
+
+      </p>									
     </div>
   </div>
 </div>

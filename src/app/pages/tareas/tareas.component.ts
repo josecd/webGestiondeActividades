@@ -25,6 +25,8 @@ export class TareasComponent implements OnInit {
 
   //load tareas
   tareasObs$: Observable<any>;
+  tareasObsHistorial$: Observable<any>;
+
   tareasSub: Subscription;
   tareas: any;
 
@@ -39,6 +41,8 @@ export class TareasComponent implements OnInit {
 
   filterPost = '';
 
+  pendientesTareas
+  historialTareas
   constructor(
     private _tareas: TareasService,
     public formBuilder: FormBuilder,
@@ -81,15 +85,26 @@ export class TareasComponent implements OnInit {
       this.tareas =[]
       this.tareas = data
     })
+
+    this._tareas.getTareasAmigoHistorial(this.id)
+    .pipe(
+      takeUntil(this.unSubscribe$)
+    )
+    .subscribe(data => {
+      this.historialTareas =[]
+      this.historialTareas = data
+    })
   }
 
   //Load tareas
   loadTareas() {
-    this.tareasObs$ = this._tareas.getTareas();
+    this.tareasObs$ = this._tareas.getTareasStatusTrue();
+    this.tareasObsHistorial$ = this._tareas.getTareasStatusFalse();
     this.tareasSub = this.tareasObs$.subscribe(res => {
       this.tareas = res;
-      console.log(this.tareas);
-      
+    })
+    this.tareasSub = this.tareasObsHistorial$.subscribe(res => {
+      this.historialTareas = res;
     })
   }
 
