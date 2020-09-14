@@ -61,7 +61,7 @@ export class PerfilAmigoComponent implements OnInit {
   }
 
   verHorario(){
-    this.router.navigate(['/horario',this.dataUser.idAmigo]);
+    this.router.navigate(['/materias',this.dataUser.idAmigo]);
     this.close();
   }
 

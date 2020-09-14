@@ -16,6 +16,8 @@
             <div class="btn-materias">   
             <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@fat">Editar Materias</button> -->
                 <button type="button" class="btn btn-primary" (click)="openCrearMAteria()"><i class="fas fa-plus-circle"></i> Nueva Materia</button>
+                <button *ngIf="user.rol ==='admin' "  type="button" class="btn btn-primary" (click)="openCrearMAteriaGrupal()"><i class="fas fa-plus-circle"></i>Materia Grupal</button>
+                
             </div>
                 <!-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
@@ -72,7 +74,7 @@
                   <!-- <div> Correo:<form action="mailto:andy@gmail.com" ...>{{item.nombreCorreo}}</form> </div> -->
                   <button (click)="openActualizar(item)" type="button" class="btn btn-primary "><i class="fas fa-edit"></i></button>
                   <button (click)="eliminarMateria(item._id)" type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
-                  <button type="button" class="btn btn-primary float-right"><i class="fas fa-copy"></i></button>
+                  <button *ngIf="id"  (click)="copyMateria(item)"  type="button" class="btn btn-primary float-right"><i class="fas fa-copy"></i></button>
 
                 </div>
 

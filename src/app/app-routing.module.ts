@@ -26,6 +26,8 @@ const routes: Routes = [
   
   //Mis rutas
   {path: 'materias', component: MateriasComponent,canActivate: [AuthGuard]},
+  {path: 'materias/:id', component: MateriasComponent,canActivate: [AuthGuard]},
+
   {path: 'perfil', component: PerfilComponent,canActivate: [AuthGuard]},
   {path: 'inicio', component: HomeComponent,canActivate: [AuthGuard]},
   {path: 'tareas', component: TareasComponent,canActivate: [AuthGuard]},

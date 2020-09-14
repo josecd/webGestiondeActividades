@@ -25,6 +25,10 @@ export class MateriasService {
     return this.afs.collection("users").doc(this.uid).collection('materias',ref=>ref.where('status','==',true)).valueChanges();
   }
 
+  getMateriasAmigo(id){
+    return this.afs.collection("users").doc(id).collection('materias',ref=>ref.where('status','==',true)).valueChanges();
+  }
+
   addMateria(form): Promise<any>{
     return new Promise(async (resolve, reject) => {
       const idMateria = this.afs.createId();
@@ -47,6 +51,27 @@ export class MateriasService {
     })
   }
 
+  copyMateria(form): Promise<any>{
+    return new Promise(async (resolve, reject) => {
+      const idMateria = this.afs.createId();
+      this.afs.collection("users").doc(this.uid).collection("materias").doc(idMateria).set({
+        _id:idMateria,
+        nombreMateria:form.nombreMateria,
+        nombreMaestro:form.nombreMaestro,
+        nombreCorreo:form.nombreCorreo,
+        nombreLink:form.nombreLink,
+        otroLink:form.otroLink,
+        created_at: new Date(),
+        updated_at: new Date(),
+        status: true,
+        isDeleted: false
+      }).then(res=>{ 
+        resolve(res)
+      }).catch(error=>{
+        reject(error)
+      })
+    })
+  }
   updateMateria(idMateria,form): Promise<any>{
     return new Promise(async (resolve, reject) => {
       this.afs.collection("users").doc(this.uid).collection("materias").doc(idMateria).update({

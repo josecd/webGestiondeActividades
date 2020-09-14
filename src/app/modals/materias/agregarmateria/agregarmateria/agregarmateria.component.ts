@@ -20,10 +20,11 @@ export class AgregarmateriaComponent implements OnInit {
 
   ) {
    this.dataMateria = data;
+    console.log(data);
     
    }
 
-  ngOnInit(): void {``
+  ngOnInit(): void {
     this.loadForm();
   }
 
