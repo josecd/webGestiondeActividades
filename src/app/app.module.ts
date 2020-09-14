@@ -53,6 +53,7 @@ import { PerfilAmigoComponent } from './modals/perfil-amigo/perfil-amigo.compone
 import { PipesModule } from './pipes/pipes.module';
 import { ChatComponent } from './components/chat/chat.component';
 import { LlamadaComponent } from './components/llamada/llamada.component';
+import { FooterComponent } from './components/footer/footer.component';
 registerLocaleData(localeEs, 'es');
 @NgModule({
   declarations: [
@@ -81,7 +82,8 @@ registerLocaleData(localeEs, 'es');
     VerAmigosComponent,
     PerfilAmigoComponent,
     ChatComponent,
-    LlamadaComponent
+    LlamadaComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
